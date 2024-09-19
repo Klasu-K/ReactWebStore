@@ -12,27 +12,25 @@ interface productProps {
 
 const Product = ({className, title, imageURL, price, desc, }: productProps) => {
   return (
-    <div className={className}>
+    <article className={className}>
       <h3>{title}</h3>
       <img src={imageURL}></img>
       <div id="priceDiv">
         <h4>{price}€</h4>
       </div>
       <p>{desc}</p>
-    </div>
+    </article>
   )
 }
 
 const StyledProduct = styled(Product)`
   /* background-color: hsla(30, 25%, 75%, 0.3); */
-  border: 3px solid #00000014;
   border: 3px solid #000000;
   display: inline-block;
   text-align: center;
-  flex-basis: 250px;
+  /* width: 250px;
   max-width: 400px;
-  min-height:400px;
-  flex-grow:1;
+  min-height:400px; */
   &:hover {
     background-color: rgba(0, 0, 0, 0.082);   
   }
@@ -49,6 +47,7 @@ const StyledProduct = styled(Product)`
   }
   img {
     max-width: 100%;
+    /* width: 100%; */
     /* max-height: 200px; */
     padding: 0 10px;
     
