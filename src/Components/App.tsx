@@ -1,10 +1,10 @@
 import { createGlobalStyle } from 'styled-components'
-import productImages from "../assets/data/productImageURLs.json"
 
-import Product from "./Product"
-import ProductContainer from "./ProductContainer"
-import StyledNavBar from "./NavBar"
-
+import NavBar from "./NavBar"
+import ProductFilter from "./ProductFilter"
+import Footer from "./Footer"
+import ProductSection from './ProductSection'
+import ProductArea from './ProductArea'
 
 const GlobalStyle = createGlobalStyle<{}>`
     html {
@@ -19,43 +19,25 @@ const GlobalStyle = createGlobalStyle<{}>`
       list-style: none;
   }
 `
+
 const App = () => {
 
 
   return (
-    <ProductContainer>
+    <>
       <GlobalStyle/>
-      <MockProduct></MockProduct>
-      <MockProduct></MockProduct>
-      <MockProduct></MockProduct>
-      <MockProduct></MockProduct>
-      <MockProduct></MockProduct>
-      <MockProduct></MockProduct>
-      <MockProduct></MockProduct>
-      <MockProduct></MockProduct>
-      <MockProduct></MockProduct>
-      <MockProduct></MockProduct>
-      <MockProduct></MockProduct>
-    </ProductContainer>
+      <NavBar/>
+      <main>
+        <ProductSection>
+          <ProductFilter/>
+          <ProductArea/>       
+        </ProductSection>
+        
+      </main>
+      <Footer></Footer>
+      </>
+    
   )
 }
-
-
-const MockProduct = () => {
-  let min = 0
-  let max = 10
-  let randomInt = Math.floor(Math.random() * (max - min + 1)) + min
-  let imgURL = productImages.urls[randomInt]
-  return(
-    <Product 
-    title="motor boat" 
-    imageURL={imgURL} 
-    desc={"this is cheap".repeat(randomInt)} 
-    price={200}>
-    </Product>
-  )
-}
-
-  
 
 export default App
