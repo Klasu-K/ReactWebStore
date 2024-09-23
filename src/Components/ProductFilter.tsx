@@ -1,22 +1,16 @@
 import styled from "styled-components";
 
-interface FilterProps {
+interface Props {
   className?: string;
 }
 
-const ProductFilter = ({className} : FilterProps) => {
-  return(
-    <aside className={className}>
-    </aside>
-  )
-}
+const ProductFilter = ({ className }: Props) => {
+  return (
+    <div className={className}></div>
+  );
+};
 
 const StyledProductFilter = styled(ProductFilter)`
-  background-color: #f1f9ff;
-  flex: 0 0 300px;
-  height: auto;
-  display: block;
-  
-`
+`;
 
-export default StyledProductFilter
+export default StyledProductFilter;

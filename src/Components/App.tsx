@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
 import NavBar from "./NavBar"
-import ProductFilter from "./ProductFilter"
+import ProductFilterArea from "./ProductFilterArea"
 import Footer from "./Footer"
 import ProductSection from './ProductSection'
 import ProductArea from './ProductArea'
@@ -29,7 +29,7 @@ const App = () => {
       <NavBar/>
       <main>
         <ProductSection>
-          <ProductFilter/>
+          <ProductFilterArea/>
           <ProductArea/>       
         </ProductSection>
         

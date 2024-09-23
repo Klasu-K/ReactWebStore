@@ -10,7 +10,7 @@ const StyledNavBar = styled(NavBar)`
   background-color: #dadada;
   height: 50px;
   width: 100%;
-  position: fixed;
+  position: sticky;
   left: 0px;
   top: 0px;
 `

@@ -16,7 +16,7 @@ const ProductArea = ({ className }: Props) => {
   return (
     <section className={className}>
       <ProductContainer>
-              {Array(loadAmount).fill(1).map((_, index) => (
+              {Array(loadAmount).fill(0).map((_, index) => (
                 <MockProduct key={index}/>
               ))}
       </ProductContainer>
@@ -26,6 +26,8 @@ const ProductArea = ({ className }: Props) => {
 };
 
 const StyledProductArea = styled(ProductArea)`
+  flex: 1;
+  min-height: 90vh;
 `;
 
 const MockProduct = () => {
