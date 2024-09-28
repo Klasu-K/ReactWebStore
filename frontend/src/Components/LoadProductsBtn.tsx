@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 interface Props {
   className?: string;
-  funct: () => void;
+  onClick: () => void;
 }
 
-const LoadProductsBtn = ({ className, funct }: Props) => {
+const LoadProductsBtn = ({ className, onClick}: Props) => {
   return (
     <button className={className}
-    onClick={funct}>
+    onClick={onClick}>
       <p>Show more products</p>
     </button>
   );

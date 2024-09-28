@@ -6,24 +6,41 @@ import Product from "./Product"
 import ProductContainer from "./ProductContainer"
 import LoadProductsBtn from "./LoadProductsBtn";
 
+import productQueries from "../services/productQueries"
+
 interface Props {
   className?: string;
 }
-
 const ProductArea = ({ className }: Props) => {
-  const [loadAmount, setLoadAmount] = useState(1)
-  
+  const [products, setProducts] = useState<Idata[]>([])
+  let imgURL = productImages.urls[0]
+  const loadProductsClick = () => loadItem(setProducts, 1)
   return (
     <section className={className}>
       <ProductContainer>
-              {Array(loadAmount).fill(0).map((_, index) => (
-                <MockProduct key={index}/>
-              ))}
+        {products.map(product => 
+          <Product
+            key={product.id} 
+            title={product.name} 
+            imageURL={imgURL} 
+            desc={product.description} 
+            price={product.price}>
+          </Product>
+        )}
       </ProductContainer>
-      <LoadProductsBtn funct={() => setLoadAmount(loadAmount+1)}/>
+      <LoadProductsBtn onClick={loadProductsClick}/>
     </section>
   );
 };
+
+//this is not doint anything usefull, just testing
+const loadItem = (setter: React.Dispatch<React.SetStateAction<Idata[]>>, id:number) => {
+  productQueries.get(id)
+  .then((data) => {
+    setter(products => products.concat(data));
+  })
+}
+
 
 const StyledProductArea = styled(ProductArea)`
   flex: 1;
