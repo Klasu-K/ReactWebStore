@@ -1,10 +1,20 @@
 import axios from "axios";
 
-const baseURL = 'http://localhost:3003/api/products/10'
+const baseURL = 'http://localhost:3003/api/products'
 
-const get = (id: number) => {
-  const request = axios.get<Idata>(`http://localhost:3003/api/products/${id}`)
-  return request.then(response => response.data)
+const getOne = (id: number) => {
+  const request = axios.get<Idata>(`${baseURL}/${id}`)
+  .then(response => response.data)
+  return request
 }
 
-export default {get}
+const getMany = (page: number, pageSize: number) => {
+  const request = axios.post<Idata>(baseURL, {
+    page: page,
+    pageSize: pageSize
+  })
+  .then(response => response.data)
+  return request
+}
+
+export default {getOne, getMany,}

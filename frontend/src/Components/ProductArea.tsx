@@ -14,7 +14,8 @@ interface Props {
 const ProductArea = ({ className }: Props) => {
   const [products, setProducts] = useState<Idata[]>([])
   let imgURL = productImages.urls[0]
-  const loadProductsClick = () => loadItem(setProducts, 1)
+  //const loadProductsClick = () => loadItem(setProducts, 1)
+  const loadProductsClick = () => getItems(1,5)
   return (
     <section className={className}>
       <ProductContainer>
@@ -35,10 +36,15 @@ const ProductArea = ({ className }: Props) => {
 
 //this is not doint anything usefull, just testing
 const loadItem = (setter: React.Dispatch<React.SetStateAction<Idata[]>>, id:number) => {
-  productQueries.get(id)
+  productQueries.getOne(id)
   .then((data) => {
-    setter(products => products.concat(data));
+    setter(products => products.concat(data))
   })
+}
+
+const getItems = (page: number, pageSize: number) => {
+  productQueries.getMany(page, pageSize)
+  .then((data) => {console.log(data)})
 }
 
 
