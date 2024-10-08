@@ -13,9 +13,12 @@ interface Props {
 }
 const ProductArea = ({ className }: Props) => {
   const [products, setProducts] = useState<Idata[]>([])
+
   let imgURL = productImages.urls[0]
-  //const loadProductsClick = () => loadItem(setProducts, 1)
-  const loadProductsClick = () => getItems(1,5)
+  const pageSize = 15
+  //counts page by amount of products loaded, propably very buggy later on
+  const page = Math.floor(products.length/pageSize)
+  const loadProductsClick = () => getItems(setProducts, page, pageSize)
   return (
     <section className={className}>
       <ProductContainer>
@@ -42,9 +45,11 @@ const loadItem = (setter: React.Dispatch<React.SetStateAction<Idata[]>>, id:numb
   })
 }
 
-const getItems = (page: number, pageSize: number) => {
+const getItems = (setter: React.Dispatch<React.SetStateAction<Idata[]>>, page: number, pageSize: number) => {
   productQueries.getMany(page, pageSize)
-  .then((data) => {console.log(data)})
+  .then((data) => {
+    setter(products => products.concat(data))
+  })
 }
 
 
