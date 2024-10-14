@@ -5,5 +5,10 @@ declare global {
     price: number;
     description: string;
   }
+
+  interface IproductQuery {
+    page: number;
+    pageSize: number;
+  } 
 }
 export {}

@@ -1,7 +1,7 @@
 import express from "express"
-import { unknownEndpoint } from "./utils/middleware"
-import {productRouter} from "./controllers/productRoutes"
-import {MONGODB_URL} from "./utils/config";
+import { unknownEndpoint } from "./src/utils/middleware"
+import {productRouter} from "./src/controllers/productRoutes"
+import {MONGODB_URL} from "./src/utils/config";
 import cors from "cors"
 import mongoose from "mongoose";
 

@@ -1,5 +1,4 @@
 import {Router} from "express"
-import productsData from "../development/products.json"
 import {Product, Iproducts} from "../models/productSchema"
 
 const productRouter = Router()
@@ -12,12 +11,9 @@ productRouter.get('/:id', (req, res) => {
 })
 
 productRouter.post('', async (req, res) => {
-  const page : number = req.body.page
-  const pageSize: number = req.body.pageSize
-  console.log("pagesize:", pageSize)
-  console.log("page:", page)
-  console.log(req.body)
-
+  const body: IproductQuery = req.body
+  const page = body.page
+  const pageSize = body.pageSize
   //get paginated products
   let products = await Product.find()
     .sort({name: 1})

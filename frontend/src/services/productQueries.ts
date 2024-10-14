@@ -7,12 +7,12 @@ const getOne = (id: number) => {
   .then(response => response.data)
   return request
 }
-
 const getMany = (page: number, pageSize: number) => {
-  const request = axios.post<Idata>(baseURL, {
+  const productQuery : IproductQuery = {
     page: page,
-    pageSize: pageSize
-  })
+    pageSize: pageSize,
+  }
+  const request = axios.post<Idata>(baseURL, productQuery)
   .then(response => response.data)
   return request
 }
