@@ -11,7 +11,8 @@ declare global {
     pageSize: number;
     sortBy: "name" | "price";
     sortOrder: 1 | -1;
-    filters: [string, string[]][]
+    simpleFilters: [string, string[]][]
+    rangeFilters: [string, number, number][]
   } 
 }
 export {}
