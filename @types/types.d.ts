@@ -9,6 +9,9 @@ declare global {
   interface IproductQuery {
     page: number;
     pageSize: number;
+    sortBy: "name" | "price";
+    sortOrder: 1 | -1;
+    filters: [string, string[]][]
   } 
 }
 export {}

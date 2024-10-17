@@ -1,204 +1,378 @@
 {
   "products": [
     {
-      "name": "Wireless Bluetooth Headphones",
-      "price": 59.99,
-      "description": "High-quality wireless headphones with noise-cancellation, 20-hour battery life, and superior sound clarity."
+      "name": "TechNova X1",
+      "price": 799.99,
+      "description": "Flagship smartphone with 5G connectivity and stunning AMOLED display.",
+      "category": "Smartphones",
+      "brand": "TechNova",
+      "operatingSystem": "Android",
+      "storageCapacity": 128,
+      "cameraFeatures": "Triple-Camera",
+      "batteryCapacity": 4500
     },
     {
-      "name": "Smart Fitness Watch",
-      "price": 129.99,
-      "description": "Track your fitness activities, monitor heart rate, sleep quality, and get notifications on the go with this stylish smartwatch."
-    },
-    {
-      "name": "4K Ultra HD Smart TV",
-      "price": 899.99,
-      "description": "Enjoy stunning picture quality with this 55-inch 4K Ultra HD Smart TV, complete with streaming apps and voice control."
-    },
-    {
-      "name": "Ergonomic Office Chair",
-      "price": 249.99,
-      "description": "Designed for all-day comfort, this chair features lumbar support, adjustable height, and breathable mesh back."
-    },
-    {
-      "name": "Electric Standing Desk",
-      "price": 499.99,
-      "description": "Adjustable height standing desk with a smooth electric motor, spacious desktop, and memory presets for ideal posture."
-    },
-    {
-      "name": "Portable Power Bank 20000mAh",
-      "price": 29.99,
-      "description": "Charge your devices on the go with this high-capacity power bank, featuring fast charging and dual USB ports."
-    },
-    {
-      "name": "Noise-Cancelling Earbuds",
-      "price": 89.99,
-      "description": "Compact, in-ear wireless earbuds with active noise-cancellation, clear audio, and a long-lasting battery."
-    },
-    {
-      "name": "Gaming Laptop",
-      "price": 1499.99,
-      "description": "High-performance gaming laptop with a powerful graphics card, 16GB RAM, and a 144Hz refresh rate display for smooth gameplay."
-    },
-    {
-      "name": "Smart Home Security Camera",
-      "price": 99.99,
-      "description": "Keep your home safe with this 1080p HD security camera, featuring motion detection, night vision, and mobile alerts."
-    },
-    {
-      "name": "Robot Vacuum Cleaner",
-      "price": 299.99,
-      "description": "Automatic vacuum cleaner with smart navigation, voice control, and powerful suction for all types of flooring."
-    },
-    {
-      "name": "Noise-Cancelling Bluetooth Headphones",
-      "price": 79.99,
-      "description": "Premium over-ear headphones with active noise cancellation and up to 30 hours of battery life."
-    },
-    {
-      "name": "Smart Air Purifier",
-      "price": 199.99,
-      "description": "Advanced air purifier with HEPA filter, real-time air quality monitoring, and smart home integration."
-    },
-    {
-      "name": "Wireless Charging Pad",
-      "price": 24.99,
-      "description": "Fast wireless charging pad compatible with most smartphones, featuring overheat protection and sleek design."
-    },
-    {
-      "name": "Electric Kettle with Temperature Control",
-      "price": 49.99,
-      "description": "Stainless steel electric kettle with precise temperature control and automatic shut-off for perfect brewing."
-    },
-    {
-      "name": "Professional DSLR Camera",
-      "price": 1199.99,
-      "description": "Capture stunning photos with this high-resolution DSLR camera, featuring interchangeable lenses and 4K video recording."
-    },
-    {
-      "name": "Smart Light Bulbs (4-Pack)",
-      "price": 39.99,
-      "description": "Color-changing smart LED bulbs that can be controlled with your phone or voice assistant for customizable lighting."
-    },
-    {
-      "name": "Cordless Electric Drill",
-      "price": 89.99,
-      "description": "Powerful cordless drill with adjustable speed settings and a rechargeable battery, perfect for home improvement projects."
-    },
-    {
-      "name": "Home Espresso Machine",
-      "price": 249.99,
-      "description": "Make café-quality espresso at home with this easy-to-use espresso machine with frother and multiple brew settings."
-    },
-    {
-      "name": "Wireless Gaming Mouse",
-      "price": 59.99,
-      "description": "Ergonomic wireless gaming mouse with customizable buttons, RGB lighting, and ultra-precise sensor for competitive gaming."
-    },
-    {
-      "name": "Smart Thermostat",
-      "price": 149.99,
-      "description": "Energy-saving smart thermostat that learns your preferences, with remote control from your phone and voice assistant integration."
-    },
-    {
-      "name": "Electric Pressure Cooker",
-      "price": 99.99,
-      "description": "Multifunctional electric pressure cooker with 10 cooking presets, delay start timer, and stainless steel pot."
-    },
-    {
-      "name": "Portable Bluetooth Speaker",
-      "price": 39.99,
-      "description": "Compact and waterproof Bluetooth speaker with powerful sound and a 12-hour battery life, perfect for outdoor use."
-    },
-    {
-      "name": "Virtual Reality Headset",
+      "name": "ZenMobile Z5",
       "price": 399.99,
-      "description": "Immerse yourself in virtual worlds with this advanced VR headset, featuring high-resolution displays and intuitive controllers."
+      "description": "Affordable smartphone with solid performance and decent camera.",
+      "category": "Budget Phones",
+      "brand": "ZenMobile",
+      "operatingSystem": "Android",
+      "storageCapacity": 64,
+      "cameraFeatures": "Dual-Camera",
+      "batteryCapacity": 3000
     },
     {
-      "name": "Smart Doorbell Camera",
-      "price": 129.99,
-      "description": "See who's at your door with this smart doorbell camera, featuring HD video, motion detection, and two-way audio."
+      "name": "EliteTech Gaming Pro",
+      "price": 999.99,
+      "description": "High-performance gaming phone with customizable RGB lighting.",
+      "category": "Gaming Phones",
+      "brand": "EliteTech",
+      "operatingSystem": "Android",
+      "storageCapacity": 512,
+      "cameraFeatures": "Quad-Camera",
+      "batteryCapacity": 6000
     },
     {
-      "name": "Laptop Cooling Pad",
-      "price": 29.99,
-      "description": "Keep your laptop cool during heavy use with this adjustable cooling pad, featuring quiet fans and USB power."
+      "name": "MegaPixel Fold",
+      "price": 1599.99,
+      "description": "Innovative foldable smartphone with dual displays and powerful specs.",
+      "category": "Foldable Phones",
+      "brand": "MegaPixel",
+      "operatingSystem": "Android",
+      "storageCapacity": 256,
+      "cameraFeatures": "Triple-Camera",
+      "batteryCapacity": 4500
     },
     {
-      "name": "Electric Toothbrush",
-      "price": 59.99,
-      "description": "Rechargeable electric toothbrush with multiple brushing modes, a built-in timer, and long-lasting battery life."
+      "name": "ProCell Edge",
+      "price": 899.99,
+      "description": "Premium smartphone with edge-to-edge display and top-notch performance.",
+      "category": "Smartphones",
+      "brand": "ProCell",
+      "operatingSystem": "iOS",
+      "storageCapacity": 128,
+      "cameraFeatures": "Dual-Camera",
+      "batteryCapacity": 3700
     },
     {
-      "name": "Portable Projector",
-      "price": 299.99,
-      "description": "Mini projector with full HD resolution, perfect for home theater setups or outdoor movie nights."
-    },
-    {
-      "name": "Smart Weight Scale",
-      "price": 49.99,
-      "description": "Track your weight, body fat, and muscle mass with this smart scale that syncs with your phone for personalized insights."
-    },
-    {
-      "name": "Electric Scooter",
-      "price": 499.99,
-      "description": "Eco-friendly electric scooter with a top speed of 15 mph, foldable design, and long-range battery for commuting."
-    },
-    {
-      "name": "Cordless Hair Clippers",
-      "price": 69.99,
-      "description": "Professional-grade cordless hair clippers with multiple guard attachments, ideal for home grooming and barbers."
-    },
-    {
-      "name": "Digital Air Fryer",
-      "price": 129.99,
-      "description": "Cook healthier meals with this digital air fryer, featuring adjustable temperature control and pre-programmed settings."
-    },
-    {
-      "name": "Wireless Charging Car Mount",
-      "price": 34.99,
-      "description": "Convenient car mount with wireless charging capability and secure grip for your phone while driving."
-    },
-    {
-      "name": "Smart LED Strip Lights",
-      "price": 19.99,
-      "description": "Customizable smart LED strip lights with millions of color options and app control for dynamic home lighting."
-    },
-    {
-      "name": "Kitchen Stand Mixer",
-      "price": 299.99,
-      "description": "Powerful stand mixer with multiple attachments, perfect for baking, kneading dough, and whipping ingredients."
-    },
-    {
-      "name": "Portable Hard Drive 2TB",
-      "price": 79.99,
-      "description": "High-speed external hard drive with 2TB storage capacity, USB 3.0, and sleek, durable design."
-    },
-    {
-      "name": "Smart Plugs (2-Pack)",
-      "price": 29.99,
-      "description": "Control your home appliances remotely with these smart plugs, compatible with voice assistants and app scheduling."
-    },
-    {
-      "name": "3D Printer",
-      "price": 499.99,
-      "description": "Create detailed 3D models with this easy-to-use 3D printer, featuring precise layer resolution and wide material compatibility."
-    },
-    {
-      "name": "Electric Bike",
-      "price": 1199.99,
-      "description": "High-performance electric bike with pedal assist, a long-lasting battery, and a top speed of 20 mph."
-    },
-    {
-      "name": "Home Theater Soundbar",
+      "name": "TechNova BudgetLite",
       "price": 199.99,
-      "description": "Enhance your home theater experience with this powerful soundbar, featuring surround sound and wireless subwoofer."
+      "description": "Basic smartphone with essential features for everyday use.",
+      "category": "Budget Phones",
+      "brand": "TechNova",
+      "operatingSystem": "Android",
+      "storageCapacity": 32,
+      "cameraFeatures": "Single-Camera",
+      "batteryCapacity": 2500
     },
     {
-      "name": "Cordless Stick Vacuum",
-      "price": 149.99,
-      "description": "Lightweight cordless vacuum with powerful suction, ideal for cleaning both carpets and hard floors."
+      "name": "ZenMobile Play",
+      "price": 249.99,
+      "description": "Mid-range smartphone designed for casual gaming and social media.",
+      "category": "Smartphones",
+      "brand": "ZenMobile",
+      "operatingSystem": "Android",
+      "storageCapacity": 128,
+      "cameraFeatures": "Dual-Camera",
+      "batteryCapacity": 4000
+    },
+    {
+      "name": "EliteTech Hyper",
+      "price": 1099.99,
+      "description": "High-end smartphone with a 120Hz refresh rate and stunning visuals.",
+      "category": "Flagship Devices",
+      "brand": "EliteTech",
+      "operatingSystem": "Android",
+      "storageCapacity": 256,
+      "cameraFeatures": "Triple-Camera",
+      "batteryCapacity": 5000
+    },
+    {
+      "name": "MegaPixel Zoomer",
+      "price": 499.99,
+      "description": "Smartphone with advanced optical zoom capabilities and sleek design.",
+      "category": "Smartphones",
+      "brand": "MegaPixel",
+      "operatingSystem": "Android",
+      "storageCapacity": 128,
+      "cameraFeatures": "Triple-Camera",
+      "batteryCapacity": 3500
+    },
+    {
+      "name": "ProCell Ultra",
+      "price": 1299.99,
+      "description": "Ultra-thin smartphone with exceptional performance and premium materials.",
+      "category": "Flagship Devices",
+      "brand": "ProCell",
+      "operatingSystem": "iOS",
+      "storageCapacity": 512,
+      "cameraFeatures": "Dual-Camera",
+      "batteryCapacity": 4200
+    },
+    {
+      "name": "TechNova Lite",
+      "price": 299.99,
+      "description": "Lightweight smartphone with long battery life and reliable performance.",
+      "category": "Budget Phones",
+      "brand": "TechNova",
+      "operatingSystem": "Android",
+      "storageCapacity": 64,
+      "cameraFeatures": "Single-Camera",
+      "batteryCapacity": 3500
+    },
+    {
+      "name": "ZenMobile Max",
+      "price": 549.99,
+      "description": "High-capacity smartphone with a large display and excellent sound quality.",
+      "category": "Smartphones",
+      "brand": "ZenMobile",
+      "operatingSystem": "Android",
+      "storageCapacity": 256,
+      "cameraFeatures": "Triple-Camera",
+      "batteryCapacity": 5000
+    },
+    {
+      "name": "EliteTech Vortex",
+      "price": 879.99,
+      "description": "Flagship smartphone with an impressive camera system and performance.",
+      "category": "Flagship Devices",
+      "brand": "EliteTech",
+      "operatingSystem": "Android",
+      "storageCapacity": 128,
+      "cameraFeatures": "Quad-Camera",
+      "batteryCapacity": 4500
+    },
+    {
+      "name": "MegaPixel Classic",
+      "price": 299.99,
+      "description": "Classic smartphone design with modern specifications for everyday use.",
+      "category": "Smartphones",
+      "brand": "MegaPixel",
+      "operatingSystem": "Android",
+      "storageCapacity": 64,
+      "cameraFeatures": "Dual-Camera",
+      "batteryCapacity": 3000
+    },
+    {
+      "name": "ProCell Mini",
+      "price": 399.99,
+      "description": "Compact smartphone with a focus on portability and efficiency.",
+      "category": "Budget Phones",
+      "brand": "ProCell",
+      "operatingSystem": "iOS",
+      "storageCapacity": 64,
+      "cameraFeatures": "Single-Camera",
+      "batteryCapacity": 2800
+    },
+    {
+      "name": "TechNova Flex",
+      "price": 799.99,
+      "description": "Foldable smartphone with advanced multitasking features and flexible design.",
+      "category": "Foldable Phones",
+      "brand": "TechNova",
+      "operatingSystem": "Android",
+      "storageCapacity": 256,
+      "cameraFeatures": "Triple-Camera",
+      "batteryCapacity": 4500
+    },
+    {
+      "name": "ZenMobile Go",
+      "price": 199.99,
+      "description": "Budget-friendly smartphone with reliable features for daily tasks.",
+      "category": "Budget Phones",
+      "brand": "ZenMobile",
+      "operatingSystem": "Android",
+      "storageCapacity": 32,
+      "cameraFeatures": "Single-Camera",
+      "batteryCapacity": 2400
+    },
+    {
+      "name": "EliteTech Titan",
+      "price": 1099.99,
+      "description": "Powerful smartphone with robust security features and premium design.",
+      "category": "Flagship Devices",
+      "brand": "EliteTech",
+      "operatingSystem": "Android",
+      "storageCapacity": 512,
+      "cameraFeatures": "Quad-Camera",
+      "batteryCapacity": 4800
+    },
+    {
+      "name": "MegaPixel Infinity",
+      "price": 649.99,
+      "description": "Smartphone with endless display and exceptional camera quality.",
+      "category": "Smartphones",
+      "brand": "MegaPixel",
+      "operatingSystem": "Android",
+      "storageCapacity": 128,
+      "cameraFeatures": "Triple-Camera",
+      "batteryCapacity": 3700
+    },
+    {
+      "name": "ProCell Stream",
+      "price": 499.99,
+      "description": "Smartphone designed for streaming with a high-resolution display.",
+      "category": "Smartphones",
+      "brand": "ProCell",
+      "operatingSystem": "iOS",
+      "storageCapacity": 256,
+      "cameraFeatures": "Dual-Camera",
+      "batteryCapacity": 3500
+    },
+    {
+      "name": "TechNova Pro Lite",
+      "price": 499.99,
+      "description": "Mid-range smartphone with excellent performance and battery life.",
+      "category": "Smartphones",
+      "brand": "TechNova",
+      "operatingSystem": "Android",
+      "storageCapacity": 128,
+      "cameraFeatures": "Dual-Camera",
+      "batteryCapacity": 4000
+    },
+    {
+      "name": "ZenMobile Shift",
+      "price": 359.99,
+      "description": "Versatile smartphone with expandable storage and a vibrant display.",
+      "category": "Smartphones",
+      "brand": "ZenMobile",
+      "operatingSystem": "Android",
+      "storageCapacity": 64,
+      "cameraFeatures": "Triple-Camera",
+      "batteryCapacity": 3000
+    },
+    {
+      "name": "EliteTech Curve",
+      "price": 1099.99,
+      "description": "Curved screen smartphone with innovative features and sleek design.",
+      "category": "Flagship Devices",
+      "brand": "EliteTech",
+      "operatingSystem": "Android",
+      "storageCapacity": 256,
+      "cameraFeatures": "Quad-Camera",
+      "batteryCapacity": 4600
+    },
+    {
+      "name": "MegaPixel Slider",
+      "price": 799.99,
+      "description": "Unique slider smartphone with a large display and excellent specs.",
+      "category": "Foldable Phones",
+      "brand": "MegaPixel",
+      "operatingSystem": "Android",
+      "storageCapacity": 512,
+      "cameraFeatures": "Triple-Camera",
+      "batteryCapacity": 4500
+    },
+    {
+      "name": "ProCell Travel",
+      "price": 249.99,
+      "description": "Compact smartphone ideal for travel with global connectivity options.",
+      "category": "Budget Phones",
+      "brand": "ProCell",
+      "operatingSystem": "iOS",
+      "storageCapacity": 64,
+      "cameraFeatures": "Single-Camera",
+      "batteryCapacity": 2800
+    },
+    {
+      "name": "TechNova Spark",
+      "price": 349.99,
+      "description": "Feature-rich smartphone with a large display and long battery life.",
+      "category": "Budget Phones",
+      "brand": "TechNova",
+      "operatingSystem": "Android",
+      "storageCapacity": 128,
+      "cameraFeatures": "Dual-Camera",
+      "batteryCapacity": 3700
+    },
+    {
+      "name": "ZenMobile Nova",
+      "price": 499.99,
+      "description": "Stylish smartphone with premium finish and reliable performance.",
+      "category": "Smartphones",
+      "brand": "ZenMobile",
+      "operatingSystem": "Android",
+      "storageCapacity": 128,
+      "cameraFeatures": "Dual-Camera",
+      "batteryCapacity": 4000
+    },
+    {
+      "name": "EliteTech Note",
+      "price": 749.99,
+      "description": "Smartphone with a large screen and high-performance stylus for productivity.",
+      "category": "Smartphones",
+      "brand": "EliteTech",
+      "operatingSystem": "Android",
+      "storageCapacity": 256,
+      "cameraFeatures": "Triple-Camera",
+      "batteryCapacity": 4500
+    },
+    {
+      "name": "MegaPixel Max",
+      "price": 599.99,
+      "description": "Smartphone with a powerful processor and impressive camera setup.",
+      "category": "Smartphones",
+      "brand": "MegaPixel",
+      "operatingSystem": "Android",
+      "storageCapacity": 256,
+      "cameraFeatures": "Triple-Camera",
+      "batteryCapacity": 4000
+    },
+    {
+      "name": "ProCell Lite",
+      "price": 299.99,
+      "description": "Affordable smartphone with decent specifications for everyday tasks.",
+      "category": "Budget Phones",
+      "brand": "ProCell",
+      "operatingSystem": "iOS",
+      "storageCapacity": 64,
+      "cameraFeatures": "Single-Camera",
+      "batteryCapacity": 3000
+    },
+    {
+      "name": "TechNova Edge",
+      "price": 799.99,
+      "description": "Smartphone with curved edges and an immersive display experience.",
+      "category": "Flagship Devices",
+      "brand": "TechNova",
+      "operatingSystem": "Android",
+      "storageCapacity": 512,
+      "cameraFeatures": "Quad-Camera",
+      "batteryCapacity": 4800
+    },
+    {
+      "name": "ZenMobile Pop",
+      "price": 199.99,
+      "description": "Colorful smartphone designed for young users with great features.",
+      "category": "Budget Phones",
+      "brand": "ZenMobile",
+      "operatingSystem": "Android",
+      "storageCapacity": 32,
+      "cameraFeatures": "Single-Camera",
+      "batteryCapacity": 2400
+    },
+    {
+      "name": "EliteTech Alpha",
+      "price": 899.99,
+      "description": "Smartphone with advanced security features and a sleek design.",
+      "category": "Flagship Devices",
+      "brand": "EliteTech",
+      "operatingSystem": "Android",
+      "storageCapacity": 256,
+      "cameraFeatures": "Triple-Camera",
+      "batteryCapacity": 4000
+    },
+    {
+      "name": "MegaPixel Pro",
+      "price": 749.99,
+      "description": "Pro smartphone with professional-grade camera capabilities.",
+      "category": "Smartphones",
+      "brand": "MegaPixel",
+      "operatingSystem": "Android",
+      "storageCapacity": 512,
+      "cameraFeatures": "Quad-Camera",
+      "batteryCapacity": 4600
     }
-  ]
+  ]  
 }

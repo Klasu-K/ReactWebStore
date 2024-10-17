@@ -14,7 +14,7 @@ app.use(unknownEndpoint)
 mongoose.set("strictQuery", true)
 mongoose.connect(MONGODB_URL) 
   .then(_result => {
-    console.log('connected to MongoDB')
+    console.log('\x1b[32m connected to MongoDB \x1b[0m')
   })
   .catch((error) => {
     console.log(MONGODB_URL);

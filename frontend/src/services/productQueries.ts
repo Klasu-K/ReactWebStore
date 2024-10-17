@@ -11,6 +11,12 @@ const getMany = (page: number, pageSize: number) => {
   const productQuery : IproductQuery = {
     page: page,
     pageSize: pageSize,
+    sortBy: "price",
+    sortOrder: -1,
+    filters: [
+      ["brand",["ProCell", "EliteTech"]],
+      ["cameraFeatures",["Single-Camera"]]
+    ]
   }
   const request = axios.post<Idata>(baseURL, productQuery)
   .then(response => response.data)
