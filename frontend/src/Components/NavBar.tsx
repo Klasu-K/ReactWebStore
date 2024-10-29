@@ -8,11 +8,12 @@ const NavBar = ({className}: {className? : string}) => {
 
 const StyledNavBar = styled(NavBar)`
   background-color: #dadada;
-  height: 50px;
+  height: var(--navbar-height);
   width: 100%;
   position: sticky;
   left: 0px;
   top: 0px;
+  z-index: 100;
 `
 
 

@@ -37,7 +37,7 @@ const ProductArea = ({ className }: Props) => {
   );
 };
 
-//this is not doint anything usefull, just testing
+//this is not doing anything usefull, just testing
 const loadItem = (setter: React.Dispatch<React.SetStateAction<Idata[]>>, id:number) => {
   productQueries.getOne(id)
   .then((data) => {

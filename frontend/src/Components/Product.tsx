@@ -15,7 +15,7 @@ const Product = ({className, title, imageURL, price, desc, }: productProps) => {
     <article className={className}>
       <h3>{title}</h3>
       <img src={imageURL}></img>
-      <div id="priceDiv">
+      <div className="priceDiv">
         <h4>{price}€</h4>
       </div>
       <p>{desc}</p>
@@ -35,7 +35,7 @@ const StyledProduct = styled(Product)`
     background-color: rgba(0, 0, 0, 0.082);   
   }
 
-  #priceDiv {
+  .priceDiv {
     background-color: #ff9100;
     color: white;
   }

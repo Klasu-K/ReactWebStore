@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 
-const ProductContainer = styled.section`
+const StyledProductContainer = styled.section`
   display: grid;
   padding: 50px 50px 0;
 
@@ -14,5 +14,5 @@ const ProductContainer = styled.section`
   }
 `
 
-export default ProductContainer
+export default StyledProductContainer
 

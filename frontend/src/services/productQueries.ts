@@ -14,10 +14,10 @@ const getMany = (page: number, pageSize: number) => {
     sortBy: "price",
     sortOrder: -1,
     simpleFilters: [
-      ["brand",["ProCell", "EliteTech"]],
+      ["brand",["ProCell", "EliteTech", "MegaPixel"]],
     ],
     rangeFilters: [
-      ["storageCapacity", 128, 128]
+      ["storageCapacity", 100, 1000]
     ]
   }
   const request = axios.post<Idata>(baseURL, productQuery)
