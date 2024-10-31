@@ -4,15 +4,16 @@ import styled from "styled-components";
 interface Props {
   className?: string;
   children?: ReactNode;
+  startOpen?: boolean;
   label: string;
 }
 
-const ProductFilterDropdown = ({ className, label, children }: Props) => {
-   const [expanded, setExpanded] = useState(false)
+const ProductFilterDropdown = ({ className, label, children, startOpen }: Props) => {
+   const [expanded, setExpanded] = useState(!!startOpen)
 
   return (
-    <div className={`${className} ${expanded ? "expanded" : ""}`} onClick={() => setExpanded(!expanded)} tabIndex={0}>
-      <div className={`labelArea`}>
+    <div className={`${className} ${expanded ? "expanded" : ""}`}>
+      <div className={`labelArea`} onClick={() => setExpanded(!expanded)}>
         <h3>{label}</h3>
       </div>
       <div className={`content`}>
