@@ -46,7 +46,9 @@ const loadItem = (setter: React.Dispatch<React.SetStateAction<Idata[]>>, id:numb
 }
 
 const getItems = (setter: React.Dispatch<React.SetStateAction<Idata[]>>, page: number, pageSize: number) => {
-  productQueries.getMany(page, pageSize)
+  const simpleFilter: [string, string[]][] = [["brand", ["ProCell", "EliteTech", "MegaPixel"]]];
+  const rangeFilter: [string, number, number][] = [["storageCapacity", 100, 1000]];
+  productQueries.getMany(page, pageSize, simpleFilter, rangeFilter)
   .then((data) => {
     setter(products => products.concat(data))
   })

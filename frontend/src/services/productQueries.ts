@@ -7,18 +7,18 @@ const getOne = (id: number) => {
   .then(response => response.data)
   return request
 }
-const getMany = (page: number, pageSize: number) => {
+
+type simpleFilters = [string, string[]][]
+type rangeFilters = [string, number, number][]
+
+const getMany = (page: number, pageSize: number, simpleFilters : simpleFilters, rangeFilters: rangeFilters) => {
   const productQuery : IproductQuery = {
     page: page,
     pageSize: pageSize,
     sortBy: "price",
     sortOrder: -1,
-    simpleFilters: [
-      ["brand",["ProCell", "EliteTech", "MegaPixel"]],
-    ],
-    rangeFilters: [
-      ["storageCapacity", 100, 1000]
-    ]
+    simpleFilters: simpleFilters,
+    rangeFilters: rangeFilters,
   }
   const request = axios.post<Idata>(baseURL, productQuery)
   .then(response => response.data)

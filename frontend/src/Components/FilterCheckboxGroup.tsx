@@ -3,9 +3,9 @@ import FilterCheckbox from "./FilterCheckbox";
 
 interface Props {
   className?: string;
-  checkboxTargets: string[];
+  category: string;
   filters: Map<string, boolean>;
-  toggleFilterState: (filter : string) => void;
+  toggleFilterState: (category: string, filter : string) => void;
 }
 
 /**
@@ -13,12 +13,14 @@ interface Props {
  * @param filters Map<string, boolean> handles checkbox state, needs to contain all values of checkboxTargets
  * @param toggleFilterState triggered on onChange
  */
-const FilterCheckboxGroup = ({ className, checkboxTargets, toggleFilterState, filters }: Props) => {
+const FilterCheckboxGroup = ({ className, category, toggleFilterState, filters }: Props) => {
+  const filterCategory = category
+  const filterArray = Array.from(filters).map(([filter]) => filter)
   
   return (
     <div className={className}>
       {
-        checkboxTargets.map(filter => <FilterCheckbox label={filter} checked={filters.get(filter) as boolean} onChange={() => toggleFilterState(filter)} key={filter}/>)
+        filterArray.map(filter => <FilterCheckbox label={filter} checked={filters.get(filter) as boolean} onChange={() => toggleFilterState(filterCategory, filter)} key={filter}/>)
       }      
     </div>
   );

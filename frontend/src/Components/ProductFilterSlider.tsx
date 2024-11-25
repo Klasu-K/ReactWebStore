@@ -1,16 +1,16 @@
 import styled from "styled-components";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 interface Props {
   className?: string;
-  min : number;
-  max : number;
-  newValueSelected: () => void;
+  min: number;
+  max: number;
+  newValueSelected: (min: number, max: number) => void;
 }
 
-const ProductFilterSlider = ({ className, min, max }: Props) => {
+const ProductFilterSlider = ({ className, min, max, newValueSelected }: Props) => {
 
   const [[currentMin, currentMax], setRange] = useState([min,max])
 
@@ -23,10 +23,11 @@ const ProductFilterSlider = ({ className, min, max }: Props) => {
     return;
   }
 
+  let timeoutID = useRef(0)
   const NewRangeSelected = () => {
-    // |FIX| currently using arrow keys on input box, can cause rapid triggering 
-
-    //TODO
+    //timeouts prevent accidental spam when using arrowkeys to change number input
+    clearTimeout(timeoutID.current)
+    timeoutID.current = setTimeout(() => newValueSelected(currentMin, currentMax), 50)
   }
 
   return (

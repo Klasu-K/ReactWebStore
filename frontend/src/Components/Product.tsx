@@ -10,7 +10,7 @@ interface productProps {
 
 
 
-const Product = ({className, title, imageURL, price, desc, }: productProps) => {
+const Product = ({className, title, imageURL, price, desc}: productProps) => {
   return (
     <article className={className}>
       <h3>{title}</h3>

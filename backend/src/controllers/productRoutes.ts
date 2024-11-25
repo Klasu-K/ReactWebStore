@@ -31,6 +31,7 @@ productRouter.post('', async (req, res) => {
     .skip(page*pageSize)
     .limit(pageSize)
     .catch(e => {throw e})
+  console.log("products:", products)
   res.send(products)
 })
 
