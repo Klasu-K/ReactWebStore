@@ -6,24 +6,28 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import productQueries from "../services/productQueries";
 
 
+type activeFiltersMap = Map<string, string[]>
+type rangeFiltersMap = Map<string, [number, number]>
+type simpleFiltersMap = Map<string, Map<string,boolean>>
+
 interface Props {
   className?: string;
+  filtersChanged: (simpleFilters: simpleFilters, rangeFilters: rangeFilters) => void
 }
-let c = 1
 
-const ProductFilterArea = ({className} : Props) => {
-  const initialSimpleFilters : [string, string[]][] = [
+const ProductFilterArea = ({className, filtersChanged} : Props) => {
+  const initialSimpleFilters : simpleFilters = [
     ["brand", ["ProCell","EliteTech","MegaPixel"]],
     ["cameraFeatures", ["Quad-Camera", "Triple-Camera", "Dual-Camera", "Single-Camera"]]
   ]
 
-  const initialRangeFilters : [string, number, number][] = [
+  const initialRangeFilters : rangeFilters = [
     ["price", 0, 1000],
     ["storageCapacity", 0, 1000]
   ]
 
   //starts with all values false
-  const [filters, setFilters] = useState<Map<string, Map<string,boolean>>>(
+  const [simpleFiltersMap, setSimpleFiltersMap] = useState<simpleFiltersMap>(
     new Map<string, Map<string,boolean>>(
       initialSimpleFilters.map(([category, filters]) => [
         category, 
@@ -32,45 +36,53 @@ const ProductFilterArea = ({className} : Props) => {
     )
   )
 
-  const [rangeFilters, setRangeFilters] = useState<Map<string, [number, number]>>(new Map())
+  const [rangeFiltersMap, setRangeFiltersMap] = useState<rangeFiltersMap>(new Map())
   
-  const calculateActiveFilters = () => {
-    //construct map with category as key and that category activeFilters as value
-    let activeFilters = new Map<string, string[]>
-    filters.forEach((filterMap, category) => {
-      let activeArray: string[] = Array.from(filterMap).flatMap(([filter, active]) => active ? filter : [])
-      if(activeArray.length != 0) {
-        activeFilters.set(category, activeArray)
-      }
-    });
+  const GetActiveSimpleFiltersMap = (overrideSimpleFiltersMap?: simpleFiltersMap) => {
+
+    const calculateActiveFilters = (simpleFiltersMap: simpleFiltersMap) => {
+      //construct map with category as key and that category activeFilters as value
+      let activeFilters: activeFiltersMap = new Map<string, string[]>
+      simpleFiltersMap.forEach((filterMap, category) => {
+        let activeArray: string[] = Array.from(filterMap).flatMap(([filter, active]) => active ? filter : [])
+        if(activeArray.length != 0) {
+          activeFilters.set(category, activeArray)
+        }
+      });
+      return activeFilters
+    }
+    let activeFilters
+    if(overrideSimpleFiltersMap === undefined) {
+      //could use useMemo, but not inside function --update maybe later
+      activeFilters = calculateActiveFilters(simpleFiltersMap)
+    } else {
+      activeFilters = calculateActiveFilters(overrideSimpleFiltersMap)
+    }
+    
+    
     return activeFilters
   }
 
   //constructs string array from filter names that have value "true" attached to them
-  const activeFilters = useMemo(calculateActiveFilters, [filters])
-    
+  const activeSimpleFiltersMap = GetActiveSimpleFiltersMap()
 
-  console.log("activeFilters: ", activeFilters)
-
-  const getProducts = () => {
-    let querySimpleFilters: [string, string[]][] = Array.from(activeFilters);
+  const SendFiltersToParent = (activeSimpleFiltersMap: activeFiltersMap, rangeFiltersMap: rangeFiltersMap) => {
+    let querySimpleFilters: simpleFilters = Array.from(activeSimpleFiltersMap);
 
     //flattens array innermost layer
-    const queryRangeFilters: [string, number, number][] = Array.from(rangeFilters)
+    const queryRangeFilters: rangeFilters = Array.from(rangeFiltersMap)
     .map(([name, [min,max]]) => [name, min, max])
-    console.log("rangefilters", queryRangeFilters)
       
-    productQueries.getMany(0, 100, querySimpleFilters, queryRangeFilters).then(data => console.log(data))
+    filtersChanged(querySimpleFilters, queryRangeFilters)
   }
 
-  getProducts()
-
   const toggleFilterState = (category: string, filter: string) => {
-    let updatedStates = new Map(filters)
-    const previsiousState = filters.get(category)?.get(filter)
+    let updatedStates = new Map(simpleFiltersMap)
+    const previsiousState = simpleFiltersMap.get(category)?.get(filter)
     if(previsiousState !== undefined) {
       updatedStates.get(category)?.set(filter, !previsiousState)
-      setFilters(updatedStates)
+      setSimpleFiltersMap(updatedStates)
+      SendFiltersToParent(GetActiveSimpleFiltersMap(updatedStates), rangeFiltersMap)
     }
     else {
       console.error(`filter with value: "${filter}" doens't exist`)
@@ -78,16 +90,17 @@ const ProductFilterArea = ({className} : Props) => {
   }
 
   const setRangeFilter = (filterName: string, min: number, max: number)  => {
-    let updatedRanges = new Map(rangeFilters)
+    let updatedRanges = new Map(rangeFiltersMap)
     updatedRanges.set(filterName, [min, max])
-    setRangeFilters(updatedRanges)
+    setRangeFiltersMap(updatedRanges)
+    SendFiltersToParent(GetActiveSimpleFiltersMap(), updatedRanges)
   }
 
   return(
     <aside className={className}>
       <div>
         {
-          Array.from(filters).map(([category, filters]) => (
+          Array.from(simpleFiltersMap).map(([category, filters]) => (
             <ProductFilterDropdown label={category} key={category}>
               <FilterCheckboxGroup category={category} filters={filters} toggleFilterState={(toggleFilterState)}/>
             </ProductFilterDropdown>
@@ -105,11 +118,11 @@ const ProductFilterArea = ({className} : Props) => {
           ))
         }
 
-        {Array.from(activeFilters).map(
+        {Array.from(activeSimpleFiltersMap).map(
           ([category, activeArray]) => activeArray.map((filter) => <p key={category+filter}>{`${category}: ${filter}`}</p>))
         }
 
-        {Array.from(rangeFilters).map(([name, [min, max]]) => {
+        {Array.from(rangeFiltersMap).map(([name, [min, max]]) => {
           return <p key={name}>{name}: {min}-{max}</p>
         })}
       </div>

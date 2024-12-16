@@ -14,5 +14,8 @@ declare global {
     simpleFilters: [string, string[]][]
     rangeFilters: [string, number, number][]
   } 
+
+  type simpleFilters = [string, string[]][]
+  type rangeFilters = [string, number, number][]
 }
 export {}
