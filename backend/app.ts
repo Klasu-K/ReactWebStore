@@ -17,7 +17,6 @@ mongoose.connect(MONGODB_URL)
     console.log('\x1b[32m connected to MongoDB \x1b[0m')
   })
   .catch((error) => {
-    console.log(MONGODB_URL);
     console.log('error connecting to MongoDB:', error.message)
   })
 

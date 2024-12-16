@@ -5,6 +5,7 @@ import productImages from "../assets/data/productImageURLs.json"
 import Product from "./Product"
 import ProductContainer from "./ProductContainer"
 import LoadProductsBtn from "./LoadProductsBtn";
+import productImage from "../assets/images/laptop.jpg"
 
 import productQueries from "../services/productQueries"
 
@@ -14,7 +15,8 @@ interface Props {
 const ProductArea = ({ className }: Props) => {
   const [products, setProducts] = useState<Idata[]>([])
 
-  let imgURL = productImages.urls[0]
+  //let imgURL = productImages.urls[0]
+  let imgURL = productImage
   const pageSize = 15
   //counts page by amount of products loaded, propably very buggy later on
   const page = Math.floor(products.length/pageSize)
@@ -45,12 +47,13 @@ const loadItem = (setter: React.Dispatch<React.SetStateAction<Idata[]>>, id:numb
   })
 }
 
-const getItems = (setter: React.Dispatch<React.SetStateAction<Idata[]>>, page: number, pageSize: number) => {
+const getItems = (productSetter: React.Dispatch<React.SetStateAction<Idata[]>>, page: number, pageSize: number) => {
   const simpleFilter: [string, string[]][] = [["brand", ["ProCell", "EliteTech", "MegaPixel"]]];
-  const rangeFilter: [string, number, number][] = [["storageCapacity", 100, 1000]];
+  const rangeFilter: [string, number, number][] = [["storageCapacity", 100, 1000]]
   productQueries.getMany(page, pageSize, simpleFilter, rangeFilter)
   .then((data) => {
-    setter(products => products.concat(data))
+    productSetter(products => products.concat(data))
+    console.log(data)
   })
 }
 
@@ -62,9 +65,10 @@ const StyledProductArea = styled(ProductArea)`
 
 const MockProduct = () => {
   let min = 0
-  let max = 10
+  let max = 0
   let randomInt = Math.floor(Math.random() * (max - min + 1)) + min
-  let imgURL = productImages.urls[randomInt]
+  //let imgURL = productImages.urls[randomInt]
+  let imgURL = productImage
   return(
     <Product 
     title="gaming pc" 
