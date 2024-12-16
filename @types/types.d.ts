@@ -17,5 +17,9 @@ declare global {
 
   type simpleFilters = [string, string[]][]
   type rangeFilters = [string, number, number][]
+  interface productFilters {
+    simpleFilters: simpleFilters,
+    rangeFilters: rangeFilters
+  }
 }
 export {}

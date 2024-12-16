@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import productImages from "../assets/data/productImageURLs.json"
 import Product from "./Product"
@@ -11,16 +11,40 @@ import productQueries from "../services/productQueries"
 
 interface Props {
   className?: string;
+  productFilters: productFilters;
 }
-const ProductArea = ({ className }: Props) => {
+const ProductArea = ({ className, productFilters}: Props) => {
   const [products, setProducts] = useState<Idata[]>([])
 
   //let imgURL = productImages.urls[0]
   let imgURL = productImage
-  const pageSize = 15
+  const pageSize = 100
   //counts page by amount of products loaded, propably very buggy later on
   const page = Math.floor(products.length/pageSize)
-  const loadProductsClick = () => getItems(setProducts, page, pageSize)
+  useEffect(() => {
+    searchAndUpdateProducts(
+      setProducts, 
+      page, 
+      pageSize, 
+      {
+        simpleFilters: productFilters.simpleFilters,
+        rangeFilters: productFilters.rangeFilters,
+      }
+    )
+  }, [productFilters])
+  
+  const loadProductsClick = () => {
+    searchAndUpdateProducts(
+      setProducts, 
+      page, 
+      pageSize, 
+      {
+        simpleFilters: [["brand", ["ProCell", "EliteTech", "MegaPixel"]]],
+        rangeFilters: [["storageCapacity", 100, 1000]],
+      }
+    )
+  }
+  
   return (
     <section className={className}>
       <ProductContainer>
@@ -47,12 +71,13 @@ const loadItem = (setter: React.Dispatch<React.SetStateAction<Idata[]>>, id:numb
   })
 }
 
-const getItems = (productSetter: React.Dispatch<React.SetStateAction<Idata[]>>, page: number, pageSize: number) => {
-  const simpleFilter: [string, string[]][] = [["brand", ["ProCell", "EliteTech", "MegaPixel"]]];
-  const rangeFilter: [string, number, number][] = [["storageCapacity", 100, 1000]]
+const searchAndUpdateProducts = (productSetter: React.Dispatch<React.SetStateAction<Idata[]>>, page: number, pageSize: number, productFilters: productFilters) => {
+  const simpleFilter: simpleFilters = productFilters.simpleFilters
+  const rangeFilter: rangeFilters = productFilters.rangeFilters
+
   productQueries.getMany(page, pageSize, simpleFilter, rangeFilter)
   .then((data) => {
-    productSetter(products => products.concat(data))
+    productSetter(data)
     console.log(data)
   })
 }

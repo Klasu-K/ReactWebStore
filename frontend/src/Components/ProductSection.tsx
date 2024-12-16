@@ -1,23 +1,29 @@
 import styled from "styled-components"
 import ProductFilterArea from './ProductFilterArea'
 import ProductArea from './ProductArea'
+import { useState } from "react";
 
 interface Props {
   className?: string;
 }
 
 const ProductSection = ({className} : Props) => {
+  const [productFilters, setProductFilters] = useState<productFilters>({
+    simpleFilters: [],
+    rangeFilters: [],
+  })
 
-  const filtersChanged = (simpleFilters: simpleFilters, rangeFilters: rangeFilters) => {
-    console.log("activeFilters: ", simpleFilters)
+  const filtersChanged = (productFilters : productFilters) => {
+    console.log("simpleFilters: ", productFilters.simpleFilters)
 
-    console.log("rangefilters", rangeFilters)
+    console.log("rangefilters", productFilters.rangeFilters)
+    setProductFilters(productFilters)
   }
 
   return(
     <div className={className}>
       <ProductFilterArea filtersChanged={filtersChanged}/>
-      <ProductArea/> 
+      <ProductArea productFilters={productFilters}/> 
     </div>      
   )
 }

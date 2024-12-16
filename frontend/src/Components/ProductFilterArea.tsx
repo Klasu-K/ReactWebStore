@@ -12,7 +12,7 @@ type simpleFiltersMap = Map<string, Map<string,boolean>>
 
 interface Props {
   className?: string;
-  filtersChanged: (simpleFilters: simpleFilters, rangeFilters: rangeFilters) => void
+  filtersChanged: (filters: productFilters) => void
 }
 
 const ProductFilterArea = ({className, filtersChanged} : Props) => {
@@ -72,8 +72,13 @@ const ProductFilterArea = ({className, filtersChanged} : Props) => {
     //flattens array innermost layer
     const queryRangeFilters: rangeFilters = Array.from(rangeFiltersMap)
     .map(([name, [min,max]]) => [name, min, max])
+
+    let productFilters: productFilters = {
+      simpleFilters: querySimpleFilters,
+      rangeFilters: queryRangeFilters,
+    }
       
-    filtersChanged(querySimpleFilters, queryRangeFilters)
+    filtersChanged(productFilters)
   }
 
   const toggleFilterState = (category: string, filter: string) => {

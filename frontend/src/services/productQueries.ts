@@ -20,7 +20,7 @@ const getMany = (page: number, pageSize: number, simpleFilters : simpleFilters, 
     simpleFilters: simpleFilters,
     rangeFilters: rangeFilters,
   }
-  const request = axios.post<Idata>(baseURL, productQuery)
+  const request = axios.post<Idata[]>(baseURL, productQuery)
   .then(response => response.data)
   return request
 }
