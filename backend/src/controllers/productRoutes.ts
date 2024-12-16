@@ -1,6 +1,7 @@
 import {Router} from "express"
 import {Product, Iproducts} from "../models/productSchema"
 import misc from "../development/misc"
+import mongoose from "mongoose"
 
 
 const productRouter = Router()
@@ -9,6 +10,18 @@ productRouter.get('/test', async (req, res) => {
   //used to test or exeute any functionality on runtime
   await misc.copyDataToDataBase()
   res.send()
+})
+
+
+let cachedProductFilters:any
+productRouter.get("/productFilters", async (req, res) => {
+  //WARNING makes product filters only update after server restart
+  let productFilters
+  if(!cachedProductFilters) {
+    cachedProductFilters =  await Product.find({})
+  }
+  productFilters = cachedProductFilters
+  res.send(productFilters)
 })
 
 productRouter.get('/:id', (req, res) => {

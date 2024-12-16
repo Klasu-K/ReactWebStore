@@ -14,9 +14,6 @@ const ProductSection = ({className} : Props) => {
   })
 
   const filtersChanged = (productFilters : productFilters) => {
-    console.log("simpleFilters: ", productFilters.simpleFilters)
-
-    console.log("rangefilters", productFilters.rangeFilters)
     setProductFilters(productFilters)
   }
 

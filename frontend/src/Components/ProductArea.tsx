@@ -23,9 +23,7 @@ const ProductArea = ({ className, productFilters}: Props) => {
   const page = Math.floor(products.length/pageSize)
   useEffect(() => {
     searchAndUpdateProducts(
-      setProducts, 
-      page, 
-      pageSize, 
+      setProducts, page, pageSize, 
       {
         simpleFilters: productFilters.simpleFilters,
         rangeFilters: productFilters.rangeFilters,
@@ -34,15 +32,8 @@ const ProductArea = ({ className, productFilters}: Props) => {
   }, [productFilters])
   
   const loadProductsClick = () => {
-    searchAndUpdateProducts(
-      setProducts, 
-      page, 
-      pageSize, 
-      {
-        simpleFilters: [["brand", ["ProCell", "EliteTech", "MegaPixel"]]],
-        rangeFilters: [["storageCapacity", 100, 1000]],
-      }
-    )
+    productQueries.getFilters()
+    .then(filters => console.log(filters))
   }
   
   return (

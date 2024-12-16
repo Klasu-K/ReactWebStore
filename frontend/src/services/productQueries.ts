@@ -2,6 +2,13 @@ import axios from "axios";
 
 const baseURL = 'http://localhost:3003/api/products'
 
+const getFilters = () => {
+  const request = axios.get(`${baseURL}/productFilters`)
+  .then(response => response.data)
+  console.log("request:", request)
+  return request
+}
+
 const getOne = (id: number) => {
   const request = axios.get<Idata>(`${baseURL}/${id}`)
   .then(response => response.data)
@@ -25,4 +32,4 @@ const getMany = (page: number, pageSize: number, simpleFilters : simpleFilters, 
   return request
 }
 
-export default {getOne, getMany,}
+export default {getOne, getMany, getFilters}
