@@ -13,7 +13,7 @@ productRouter.get('/test', async (req, res) => {
 })
 
 
-let cachedProductFilters:any
+let cachedProductFilters: productFilters
 productRouter.get("/productFilters", async (req, res) => {
   //properties that can be used for filtering, db uses same names on it's product data
   const simpleFilters = ["name", "category", "brand", "operatingSystem","cameraFeatures"]
@@ -76,33 +76,52 @@ const makeProductFilter = (simpleFilters : [string, string[]][], rangeFilters : 
   return {...simpleProductFilters, ...rangeProductFilters}
 }
 
-const queryForFilters = async (simpleFilters:string[], rangeFilters:string[]) => {
+const queryForFilters = async (simpleFiltersProperties:string[], rangeFiltersProperties:string[]) => {
   let query:any = [
     {
       $group: {_id:null}
     },
     {
-      $project: {_id:0}
+      $project: {
+        _id:0,
+        simpleFilters: {},
+        rangeFilters: {},
+      }
     }
   ]
   let groupStage = query[0].$group
   let projectStage = query[1].$project
-  simpleFilters.forEach(filter => {
+  simpleFiltersProperties.forEach(filter => {
+    let filters = `${filter}s`
+    let $filters = `$${filter}s`
+    let $filter = `$${filter}`
     //example: colors: {$addToSet: "$color"}
-    groupStage[`${filter}s`] = {$addToSet: `$${filter}`}
+    groupStage[filters] = {$addToSet: $filter}
     //example: colors: 1
-    projectStage[`${filter}s`] = 1
+    projectStage.simpleFilters[filters] = $filters
   })
-  rangeFilters.forEach(filter => {
+  rangeFiltersProperties.forEach(filter => {
     let filterMin = `${filter}Min`
     let filterMax = `${filter}Max`
     //example: priceMin: {$min: "$price"}
     groupStage[filterMin] = {$min: `$${filter}`}
     groupStage[filterMax] = {$max: `$${filter}`}
     //example: priceRange: ["$priceMin", "$priceMax"]
-    projectStage[`${filter}Range`] = [`$${filterMin}`,`$${filterMax}`]
+    projectStage.rangeFilters[`${filter}Range`] = [`$${filterMin}`,`$${filterMax}`]
   })
-  let productFilters = await Product.aggregate(query)
+  //console.dir(query, {depth: null}) //query
+  let productFiltersObject = await Product.aggregate(query)
+  let simpleFilters = Object.entries(productFiltersObject[0].simpleFilters) as simpleFilters
+  let nestedRangeFilters: [string,[number,number]][] = Object.entries(productFiltersObject[0].rangeFilters)
+  let rangeFilters: rangeFilters = nestedRangeFilters
+  .map(([value, [min, max]]) => [value, min, max])
+  //let productFilters = productFiltersObject
+  let productFilters: productFilters = {
+    simpleFilters,
+    rangeFilters,
+  }
+    
+  console.dir(productFilters, {depth: null})
   return productFilters
 }
 

@@ -3,7 +3,7 @@ import axios from "axios";
 const baseURL = 'http://localhost:3003/api/products'
 
 const getFilters = () => {
-  const request = axios.get(`${baseURL}/productFilters`)
+  const request = axios.get<productFilters>(`${baseURL}/productFilters`)
   .then(response => response.data)
   return request
 }

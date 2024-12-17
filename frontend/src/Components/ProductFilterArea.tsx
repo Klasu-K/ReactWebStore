@@ -38,6 +38,12 @@ const ProductFilterArea = ({className, filtersChanged} : Props) => {
   )
 
   const [rangeFiltersMap, setRangeFiltersMap] = useState<rangeFiltersMap>(new Map())
+
+  useEffect(() => {
+    getFilteringOptions()
+    .then(/* TODO */)
+  }, [])
+
   
   const GetActiveSimpleFiltersMap = (overrideSimpleFiltersMap?: simpleFiltersMap) => {
 
@@ -137,7 +143,7 @@ const ProductFilterArea = ({className, filtersChanged} : Props) => {
 }
 
 const getFilteringOptions =  async () => {
-  productQueries.getFilters()
+  return productQueries.getFilters()
 }
 
 const StyledProductFilterArea = styled(ProductFilterArea)`
