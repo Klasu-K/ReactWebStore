@@ -21,7 +21,9 @@ productRouter.get("/productFilters", async (req, res) => {
     cachedProductFilters =  await Product.find({})
   }
   productFilters = cachedProductFilters
-  res.send(productFilters)
+  let query = makeFilterQuery()
+  const results = await Product.aggregate(query)
+  res.send(results)
 })
 
 productRouter.get('/:id', (req, res) => {
@@ -62,6 +64,46 @@ const makeProductFilter = (simpleFilters : [string, string[]][], rangeFilters : 
   return {...simpleProductFilters, ...rangeProductFilters}
 }
 
+const makeFilterQuery = () => {
+  let query = [
+    {
+      $group: {
+        _id: null,
+        names: {$addToSet: "$name"},
+        brands: {$addToSet: "$brand"},
+        categories: {$addToSet: "$category"},
+        operatingSystems: {$addToSet: "$operatingSystem"},
+        cameraFeatures: {$addToSet: "$cameraFeatures"},
+        minPrice: {$min: "$price"},
+        maxPrice: {$max: "$price"},
+        minStorageCapacity: {$min: "$storageCapacity"},
+        maxStorageCapacity: {$max: "$storageCapacity"},
+        minBatteryCapacity: {$min: "$batteryCapacity"},
+        maxBatteryCapacity: {$max: "$batteryCapacity"},
+      }
+    }, 
+    {
+      $project: {
+        _id: 0,
+        names: 1,
+        brands: 1,
+        categories: 1,
+        operatingSystems: 1,
+        cameraFeatures: 1,
+        priceRange: ["$minPrice", "$maxPrice"],
+        storageCapacityRange: ["$minStorageCapacity", "$maxStorageCapacity"],
+        batteryCapacityRange: ["$minBatteryCapacity", "$maxBatteryCapacity"]
+      }
+    }
+  ]
+  
+  /* storageCapacity
+  512
+  batteryCapacity
+  6000 */
+
+  return query
+}
 
 
 export {productRouter}
