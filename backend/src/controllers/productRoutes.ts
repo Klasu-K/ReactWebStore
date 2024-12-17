@@ -15,15 +15,30 @@ productRouter.get('/test', async (req, res) => {
 
 let cachedProductFilters:any
 productRouter.get("/productFilters", async (req, res) => {
+  //properties that can be used for filtering, db uses same names on it's product data
+  const simpleFilters = ["name", "category", "brand", "operatingSystem","cameraFeatures"]
+  const rangeFilters = ["price","storageCapacity","batteryCapacity"]
   //WARNING makes product filters only update after server restart
   let productFilters
   if(!cachedProductFilters) {
-    cachedProductFilters =  await Product.find({})
+    try {
+      let query = makeFilterQuery(simpleFilters, rangeFilters)
+      cachedProductFilters = await Product.aggregate(query)
+      //removes useless array around results
+      cachedProductFilters = cachedProductFilters[0]
+    }
+    catch (e) {
+      console.error(e)
+      res.sendStatus(500)
+    }
+  }
+  else {
+    console.log("used cached productFilters, restart server to reset cache")
   }
   productFilters = cachedProductFilters
-  let query = makeFilterQuery()
-  const results = await Product.aggregate(query)
-  res.send(results)
+  res.send(productFilters)
+  
+  
 })
 
 productRouter.get('/:id', (req, res) => {
@@ -64,43 +79,32 @@ const makeProductFilter = (simpleFilters : [string, string[]][], rangeFilters : 
   return {...simpleProductFilters, ...rangeProductFilters}
 }
 
-const makeFilterQuery = () => {
-  let query = [
+const makeFilterQuery = (simpleFilters:string[], rangeFilters:string[]) => {
+  let query:any = [
     {
-      $group: {
-        _id: null,
-        names: {$addToSet: "$name"},
-        brands: {$addToSet: "$brand"},
-        categories: {$addToSet: "$category"},
-        operatingSystems: {$addToSet: "$operatingSystem"},
-        cameraFeatures: {$addToSet: "$cameraFeatures"},
-        minPrice: {$min: "$price"},
-        maxPrice: {$max: "$price"},
-        minStorageCapacity: {$min: "$storageCapacity"},
-        maxStorageCapacity: {$max: "$storageCapacity"},
-        minBatteryCapacity: {$min: "$batteryCapacity"},
-        maxBatteryCapacity: {$max: "$batteryCapacity"},
-      }
-    }, 
+      $group: {_id:null}
+    },
     {
-      $project: {
-        _id: 0,
-        names: 1,
-        brands: 1,
-        categories: 1,
-        operatingSystems: 1,
-        cameraFeatures: 1,
-        priceRange: ["$minPrice", "$maxPrice"],
-        storageCapacityRange: ["$minStorageCapacity", "$maxStorageCapacity"],
-        batteryCapacityRange: ["$minBatteryCapacity", "$maxBatteryCapacity"]
-      }
+      $project: {_id:0}
     }
   ]
-  
-  /* storageCapacity
-  512
-  batteryCapacity
-  6000 */
+  let groupStage = query[0].$group
+  let projectStage = query[1].$project
+  simpleFilters.forEach(filter => {
+    //example: colors: {$addToSet: "$color"}
+    groupStage[`${filter}s`] = {$addToSet: `$${filter}`}
+    //example: colors: 1
+    projectStage[`${filter}s`] = 1
+  })
+  rangeFilters.forEach(filter => {
+    let filterMin = `${filter}Min`
+    let filterMax = `${filter}Max`
+    //example: priceMin: {$min: "$price"}
+    groupStage[filterMin] = {$min: `$${filter}`}
+    groupStage[filterMax] = {$max: `$${filter}`}
+    //example: priceRange: ["$priceMin", "$priceMax"]
+    projectStage[`${filter}Range`] = [`$${filterMin}`,`$${filterMax}`]
+  })
 
   return query
 }
