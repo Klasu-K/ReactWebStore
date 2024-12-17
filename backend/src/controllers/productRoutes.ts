@@ -22,10 +22,7 @@ productRouter.get("/productFilters", async (req, res) => {
   let productFilters
   if(!cachedProductFilters) {
     try {
-      let query = makeFilterQuery(simpleFilters, rangeFilters)
-      cachedProductFilters = await Product.aggregate(query)
-      //removes useless array around results
-      cachedProductFilters = cachedProductFilters[0]
+      cachedProductFilters = await queryForFilters(simpleFilters, rangeFilters)
     }
     catch (e) {
       console.error(e)
@@ -79,7 +76,7 @@ const makeProductFilter = (simpleFilters : [string, string[]][], rangeFilters : 
   return {...simpleProductFilters, ...rangeProductFilters}
 }
 
-const makeFilterQuery = (simpleFilters:string[], rangeFilters:string[]) => {
+const queryForFilters = async (simpleFilters:string[], rangeFilters:string[]) => {
   let query:any = [
     {
       $group: {_id:null}
@@ -105,8 +102,8 @@ const makeFilterQuery = (simpleFilters:string[], rangeFilters:string[]) => {
     //example: priceRange: ["$priceMin", "$priceMax"]
     projectStage[`${filter}Range`] = [`$${filterMin}`,`$${filterMax}`]
   })
-
-  return query
+  let productFilters = await Product.aggregate(query)
+  return productFilters
 }
 
 

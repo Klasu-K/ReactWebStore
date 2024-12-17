@@ -16,6 +16,7 @@ interface Props {
 }
 
 const ProductFilterArea = ({className, filtersChanged} : Props) => {
+  //TODO FIX rangeFilters that are applied initially don't filter anything before first user intercation for that filter
   const initialSimpleFilters : simpleFilters = [
     ["brand", ["ProCell","EliteTech","MegaPixel"]],
     ["cameraFeatures", ["Quad-Camera", "Triple-Camera", "Dual-Camera", "Single-Camera"]]
@@ -133,6 +134,10 @@ const ProductFilterArea = ({className, filtersChanged} : Props) => {
       </div>
     </aside>
   )
+}
+
+const getFilteringOptions =  async () => {
+  productQueries.getFilters()
 }
 
 const StyledProductFilterArea = styled(ProductFilterArea)`

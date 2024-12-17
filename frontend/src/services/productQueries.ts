@@ -5,7 +5,6 @@ const baseURL = 'http://localhost:3003/api/products'
 const getFilters = () => {
   const request = axios.get(`${baseURL}/productFilters`)
   .then(response => response.data)
-  console.log("request:", request)
   return request
 }
 
