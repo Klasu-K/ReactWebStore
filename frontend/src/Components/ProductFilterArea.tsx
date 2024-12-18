@@ -16,32 +16,28 @@ interface Props {
 }
 
 const ProductFilterArea = ({className, filtersChanged} : Props) => {
-  //TODO FIX rangeFilters that are applied initially don't filter anything before first user intercation for that filter
-  const initialSimpleFilters : simpleFilters = [
-    ["brand", ["ProCell","EliteTech","MegaPixel"]],
-    ["cameraFeatures", ["Quad-Camera", "Triple-Camera", "Dual-Camera", "Single-Camera"]]
-  ]
-
-  const initialRangeFilters : rangeFilters = [
-    ["price", 0, 1000],
-    ["storageCapacity", 0, 1000]
-  ]
 
   //starts with all values false
   const [simpleFiltersMap, setSimpleFiltersMap] = useState<simpleFiltersMap>(
-    new Map<string, Map<string,boolean>>(
-      initialSimpleFilters.map(([category, filters]) => [
-        category, 
-        new Map(filters.map(filter => [filter, false]))
-      ])
-    )
+    new Map<string, Map<string,boolean>>()
   )
 
   const [rangeFiltersMap, setRangeFiltersMap] = useState<rangeFiltersMap>(new Map())
 
+  const [possibleFilters, setPossibleFilters] = useState<productFilters>()
+
   useEffect(() => {
     getFilteringOptions()
-    .then(/* TODO */)
+    .then(productFilters => {
+      setPossibleFilters(productFilters)
+      setSimpleFiltersMap(new Map<string, Map<string,boolean>>(
+        productFilters.simpleFilters.map(([category, filters]) => [
+          category, 
+          new Map(filters.map(filter => [filter, false]))
+        ])
+      ))
+      console.log("possibleSimpleFilters:", possibleFilters?.simpleFilters)
+    })
   }, [])
 
   
@@ -119,7 +115,7 @@ const ProductFilterArea = ({className, filtersChanged} : Props) => {
           ))
         }
         {
-          initialRangeFilters.map(([name, min, max]) =>(
+          possibleFilters?.rangeFilters.map(([name, min, max]) =>(
             <ProductFilterDropdown label={name} startOpen key={name}>
               <ProductFilterSlider
                 newValueSelected={(minHandle, maxHandle) => {setRangeFilter(name, minHandle, maxHandle)}}

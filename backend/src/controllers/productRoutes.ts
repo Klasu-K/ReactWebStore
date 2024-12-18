@@ -8,7 +8,7 @@ const productRouter = Router()
 
 productRouter.get('/test', async (req, res) => {
   //used to test or exeute any functionality on runtime
-  await misc.copyDataToDataBase()
+  //await misc.copyDataToDataBase()
   res.send()
 })
 
@@ -20,7 +20,7 @@ productRouter.get("/productFilters", async (req, res) => {
   const rangeFilters = ["price","storageCapacity","batteryCapacity"]
   //WARNING makes product filters only update after server restart
   let productFilters
-  if(!cachedProductFilters) {
+  if(!cachedProductFilters || true/* BLOCKS CACHING */) {
     try {
       cachedProductFilters = await queryForFilters(simpleFilters, rangeFilters)
     }
@@ -98,16 +98,19 @@ const queryForFilters = async (simpleFiltersProperties:string[], rangeFiltersPro
     //example: colors: {$addToSet: "$color"}
     groupStage[filters] = {$addToSet: $filter}
     //example: colors: 1
-    projectStage.simpleFilters[filters] = $filters
+    projectStage.simpleFilters[filter] = $filters
   })
   rangeFiltersProperties.forEach(filter => {
     let filterMin = `${filter}Min`
     let filterMax = `${filter}Max`
+    let $filterMin = `$${filter}Min`
+    let $filterMax = `$${filter}Max`
+    let $filter = `$${filter}`
     //example: priceMin: {$min: "$price"}
-    groupStage[filterMin] = {$min: `$${filter}`}
-    groupStage[filterMax] = {$max: `$${filter}`}
-    //example: priceRange: ["$priceMin", "$priceMax"]
-    projectStage.rangeFilters[`${filter}Range`] = [`$${filterMin}`,`$${filterMax}`]
+    groupStage[filterMin] = {$min: $filter}
+    groupStage[filterMax] = {$max: $filter}
+    //example: price: ["$priceMin", "$priceMax"]
+    projectStage.rangeFilters[filter] = [$filterMin,$filterMax]
   })
   //console.dir(query, {depth: null}) //query
   let productFiltersObject = await Product.aggregate(query)
