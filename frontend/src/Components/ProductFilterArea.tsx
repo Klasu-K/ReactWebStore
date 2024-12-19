@@ -5,8 +5,6 @@ import ProductFilterSlider from "./ProductFilterSlider";
 import { useEffect, useMemo, useRef, useState } from "react";
 import productQueries from "../services/productQueries";
 
-
-type activeFiltersMap = Map<string, string[]>
 type rangeFiltersMap = Map<string, [number, number]>
 type simpleFiltersMap = Map<string, Map<string,boolean>>
 
@@ -17,14 +15,11 @@ interface Props {
 
 const ProductFilterArea = ({className, filtersChanged} : Props) => {
 
-  //starts with all values false
+  const [possibleFilters, setPossibleFilters] = useState<productFilters>()
+  const [rangeFiltersMap, setRangeFiltersMap] = useState<rangeFiltersMap>(new Map())
   const [simpleFiltersMap, setSimpleFiltersMap] = useState<simpleFiltersMap>(
     new Map<string, Map<string,boolean>>()
   )
-
-  const [rangeFiltersMap, setRangeFiltersMap] = useState<rangeFiltersMap>(new Map())
-
-  const [possibleFilters, setPossibleFilters] = useState<productFilters>()
 
   useEffect(() => {
     getFilteringOptions()
@@ -39,69 +34,28 @@ const ProductFilterArea = ({className, filtersChanged} : Props) => {
       console.log("possibleSimpleFilters:", possibleFilters?.simpleFilters)
     })
   }, [])
-
   
-  const GetActiveSimpleFiltersMap = (overrideSimpleFiltersMap?: simpleFiltersMap) => {
+  const toggleSimpleFilter = (category: string, filter: string) => {
+    let updatedSimpleFiltersMap = calculateToggledSimpleFilters(category, filter, simpleFiltersMap)
 
-    const calculateActiveFilters = (simpleFiltersMap: simpleFiltersMap) => {
-      //construct map with category as key and that category activeFilters as value
-      let activeFilters: activeFiltersMap = new Map<string, string[]>
-      simpleFiltersMap.forEach((filterMap, category) => {
-        let activeArray: string[] = Array.from(filterMap).flatMap(([filter, active]) => active ? filter : [])
-        if(activeArray.length != 0) {
-          activeFilters.set(category, activeArray)
-        }
-      });
-      return activeFilters
+    let newFilters: productFilters = {
+      simpleFilters: getActiveSimpleFilters(updatedSimpleFiltersMap),
+      rangeFilters: rangeFiltersMapToRangeFilters(rangeFiltersMap),
     }
-    let activeFilters
-    if(overrideSimpleFiltersMap === undefined) {
-      //could use useMemo, but not inside function --update maybe later
-      activeFilters = calculateActiveFilters(simpleFiltersMap)
-    } else {
-      activeFilters = calculateActiveFilters(overrideSimpleFiltersMap)
-    }
-    
-    
-    return activeFilters
-  }
-
-  //constructs string array from filter names that have value "true" attached to them
-  const activeSimpleFiltersMap = GetActiveSimpleFiltersMap()
-
-  const SendFiltersToParent = (activeSimpleFiltersMap: activeFiltersMap, rangeFiltersMap: rangeFiltersMap) => {
-    let querySimpleFilters: simpleFilters = Array.from(activeSimpleFiltersMap);
-
-    //flattens array innermost layer
-    const queryRangeFilters: rangeFilters = Array.from(rangeFiltersMap)
-    .map(([name, [min,max]]) => [name, min, max])
-
-    let productFilters: productFilters = {
-      simpleFilters: querySimpleFilters,
-      rangeFilters: queryRangeFilters,
-    }
-      
-    filtersChanged(productFilters)
-  }
-
-  const toggleFilterState = (category: string, filter: string) => {
-    let updatedStates = new Map(simpleFiltersMap)
-    const previsiousState = simpleFiltersMap.get(category)?.get(filter)
-    if(previsiousState !== undefined) {
-      updatedStates.get(category)?.set(filter, !previsiousState)
-      setSimpleFiltersMap(updatedStates)
-      SendFiltersToParent(GetActiveSimpleFiltersMap(updatedStates), rangeFiltersMap)
-    }
-    else {
-      console.error(`filter with value: "${filter}" doens't exist`)
-    }
+    setSimpleFiltersMap(updatedSimpleFiltersMap)
+    filtersChanged(newFilters)
   }
 
   const setRangeFilter = (filterName: string, min: number, max: number)  => {
-    let updatedRanges = new Map(rangeFiltersMap)
-    updatedRanges.set(filterName, [min, max])
-    setRangeFiltersMap(updatedRanges)
-    SendFiltersToParent(GetActiveSimpleFiltersMap(), updatedRanges)
+    let updatedRangeFiltersMap = new Map(rangeFiltersMap)
+    updatedRangeFiltersMap.set(filterName, [min, max])
+
+    let newFilters: productFilters = {
+      simpleFilters: getActiveSimpleFilters(simpleFiltersMap),
+      rangeFilters: rangeFiltersMapToRangeFilters(updatedRangeFiltersMap),
+    }
+    setRangeFiltersMap(updatedRangeFiltersMap)
+    filtersChanged(newFilters)
   }
 
   return(
@@ -110,7 +64,7 @@ const ProductFilterArea = ({className, filtersChanged} : Props) => {
         {
           Array.from(simpleFiltersMap).map(([category, filters]) => (
             <ProductFilterDropdown label={category} key={category}>
-              <FilterCheckboxGroup category={category} filters={filters} toggleFilterState={(toggleFilterState)}/>
+              <FilterCheckboxGroup category={category} filters={filters} toggleFilterState={(toggleSimpleFilter)}/>
             </ProductFilterDropdown>
           ))
         }
@@ -126,7 +80,7 @@ const ProductFilterArea = ({className, filtersChanged} : Props) => {
           ))
         }
 
-        {Array.from(activeSimpleFiltersMap).map(
+        {getActiveSimpleFilters(simpleFiltersMap).map(
           ([category, activeArray]) => activeArray.map((filter) => <p key={category+filter}>{`${category}: ${filter}`}</p>))
         }
 
@@ -138,8 +92,39 @@ const ProductFilterArea = ({className, filtersChanged} : Props) => {
   )
 }
 
+const calculateToggledSimpleFilters = (category: string, filter: string,simpleFiltersMap: simpleFiltersMap) => {
+  let updatedStates: simpleFiltersMap = new Map(simpleFiltersMap)
+  const previsiousState = simpleFiltersMap.get(category)?.get(filter)
+  if(previsiousState !== undefined) {
+    updatedStates.get(category)?.set(filter, !previsiousState)
+  }
+  else {
+    console.error(`filter with value: "${filter}" doens't exist`)
+  }
+  return updatedStates
+}
+
 const getFilteringOptions =  async () => {
   return productQueries.getFilters()
+}
+
+const rangeFiltersMapToRangeFilters = (rangeFiltersMap: rangeFiltersMap) => {
+  const rangeFilters: rangeFilters = Array.from(rangeFiltersMap)
+  .map(([name, [min,max]]) => [name, min, max])
+  return rangeFilters
+}
+
+const getActiveSimpleFilters = (simpleFiltersMap: simpleFiltersMap) => {
+  //makes array with category as first value and array from filters that are active as second value; Ex. [[brand, [brand1, brand2]], [color, [blue, red, green]]
+
+  let activeFilters: simpleFilters = []
+  simpleFiltersMap.forEach((filterMap, category) => {
+    let activeArray: string[] = Array.from(filterMap).flatMap(([filter, active]) => active ? filter : [])
+    if(activeArray.length != 0) {
+      activeFilters.push([category, activeArray])
+    }
+  });
+  return activeFilters
 }
 
 const StyledProductFilterArea = styled(ProductFilterArea)`
