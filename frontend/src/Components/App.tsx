@@ -1,17 +1,26 @@
 import { createGlobalStyle } from 'styled-components'
-
 import NavBar from './NavBar'
 import Footer from './Footer'
 import StyledProductSection from './ProductSection'
+import funnelSansFont from "../assets/fonts/Funnel_Sans/FunnelSans-VariableFont_wght.ttf"
+
 
 
 const GlobalStyle = createGlobalStyle<{}>`
+  @font-face {
+      font-family: "Funnel Sans";
+      src: url(${funnelSansFont});
+  }
+
   :root {
     --navbar-height: 50px;
-  }
-    html {
+    --space-after-navbar: 20px;
+    --site-left-space: 20px;
     box-sizing: border-box;
+    font-weight: 400;
+    font-family: "Funnel Sans", "Arial";
   }
+
   *, *:before, *:after {
     box-sizing: inherit;
     margin: 0;

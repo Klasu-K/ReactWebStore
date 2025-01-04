@@ -69,6 +69,7 @@ const ProductFilterArea = ({className, filtersChanged} : Props) => {
           ))
         }
         {
+          //renders sliders basen on possible rangefilters, but keeps track of selection in RangeFiltersMap
           possibleFilters?.rangeFilters.map(([name, min, max]) =>(
             <ProductFilterDropdown label={name} startOpen key={name}>
               <ProductFilterSlider
@@ -129,12 +130,24 @@ const getActiveSimpleFilters = (simpleFiltersMap: simpleFiltersMap) => {
 
 const StyledProductFilterArea = styled(ProductFilterArea)`
   background-color: #f1f9ff;
-  flex: 0 0 300px;
+  flex: 0 0 250px;
   height: auto;
   display: block; 
   > div {
     position: sticky;
+    max-height: calc(100vh - var(--navbar-height));
+    padding-left: var(--site-left-space);
     top: var(--navbar-height);
+    overflow-y: auto;
+
+    //Hide scrollbar for Chrome, Safari and Opera
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    //Hide scrollbar for IE, Edge, Firefox
+    -ms-overflow-style: none;  //IE and Edge
+    scrollbar-width: none;  //Firefox
+
   }
 `
 

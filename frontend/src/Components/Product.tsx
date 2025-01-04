@@ -13,17 +13,18 @@ interface productProps {
 const Product = ({className, title, imageURL, price, desc}: productProps) => {
   return (
     <article className={className}>
-      <h3>{title}</h3>
+      <h3 className="title">{title}</h3>
       <img src={imageURL}></img>
       <div className="priceDiv">
-        <h4>{price}€</h4>
+        <h4 className="price">{price}€</h4>
       </div>
-      <p>{desc}</p>
+      <p className="description">{desc}</p>
     </article>
   )
 }
 
-const StyledProduct = styled(Product)`
+const StyledProduct = styled(Product)`  
+
   /* background-color: hsla(30, 25%, 75%, 0.3); */
   border: 3px solid #000000;
   display: inline-block;
@@ -39,12 +40,18 @@ const StyledProduct = styled(Product)`
     background-color: #ff9100;
     color: white;
   }
-  h3 {
-    font-size: 2.5em;
+  .title {
+    font-size: 1.5em;
+    font-weight: 600;
   }
-  h4 {
+  .price {
     font-size: 1.4em;
   }
+
+  .description {
+    font-weight: 400;
+  }
+
   img {
     max-width: 100%;
     /* width: 100%; */

@@ -25,6 +25,9 @@ const ProductFilterDropdown = ({ className, label, children, startOpen }: Props)
 
 const StyledProductFilterDropdown = styled(ProductFilterDropdown)`
 
+&:first-of-type {
+  border-top: none
+}
 border-top: 1px #0000005c solid;
 margin: 0px 10px;
 padding-bottom: 10px;
@@ -48,6 +51,7 @@ padding-top: 5px;
 
 h3 {
   font-size: 1.5em; 
+  font-weight: 500;
 }
 
 &.expanded {

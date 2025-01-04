@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 const StyledProductContainer = styled.section`
   display: grid;
-  padding: 50px 50px 0;
+  padding: 100px 50px 0 50px;
 
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px; /* Spacing between items */ 
