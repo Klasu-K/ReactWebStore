@@ -16,11 +16,11 @@ productRouter.get('/test', async (req, res) => {
 let cachedProductFilters: productFilters
 productRouter.get("/productFilters", async (req, res) => {
   //properties that can be used for filtering, db uses same names on it's product data
-  const simpleFilters = ["name", "category", "brand", "operatingSystem","cameraFeatures"]
+  const simpleFilters = ["category", "brand", "operatingSystem","cameraFeatures"]
   const rangeFilters = ["price","storageCapacity","batteryCapacity"]
   //WARNING makes product filters only update after server restart
   let productFilters
-  if(!cachedProductFilters || true/* BLOCKS CACHING */) {
+  if(!cachedProductFilters || true/* BLOCKS CACHING TODO: REMOVE */) {
     try {
       cachedProductFilters = await queryForFilters(simpleFilters, rangeFilters)
     }

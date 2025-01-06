@@ -34,7 +34,7 @@ const ProductFilterSlider = ({ className, min, max, newValueSelected }: Props) =
     <div className={className}>
       <div className="values">
         <input type="number" 
-          value={currentMin} 
+          value={Math.round(currentMin)} 
           onChange={(e) => {
             setRange([Number(e.target.value), currentMax])
             NewRangeSelected()
@@ -44,7 +44,7 @@ const ProductFilterSlider = ({ className, min, max, newValueSelected }: Props) =
         />
 
         <input type="number" 
-          value={currentMax} 
+          value={Math.round(currentMax)} 
           onChange={(e) => {
             setRange([currentMin, Number(e.target.value)])
             NewRangeSelected()
@@ -53,7 +53,7 @@ const ProductFilterSlider = ({ className, min, max, newValueSelected }: Props) =
           max={max}
         />
       </div>
-      <Slider
+      <Slider className="test"
       range
       min={min}
       max={max}
@@ -69,19 +69,36 @@ const ProductFilterSlider = ({ className, min, max, newValueSelected }: Props) =
 
 const StyledProductFilterSlider = styled(ProductFilterSlider)`
   padding: 10px 10px;
- 
+  .rc-slider-track {
+    background-color: #00000050;
+  }
+
+  .rc-slider-handle {
+    background-color: #afe8ff;
+    border: solid 1px #000000ce;
+    width: 16px;
+    height: 16px;
+    margin-top: -6px;
+  }
+
   .values {
-    padding: 5px 0 5px;
+    padding-bottom: 10px;
     width: 90%;
     margin: auto;
     display: flex;
     justify-content: space-between;
     input {
       text-align: center;
-      font-size: 1.2em;
+      font-family: "Funnel Sans", "Arial";
+      font-weight: 500;
+      font-size: 1em;
+      border-style: none;
+      border-radius: 5px;
+      box-sizing: content-box;
+      padding: 3px;
       width: 4em;
       &:hover{
-        background-color: rgb(240, 240, 240);
+        box-shadow: 0 0 0 2px #000000;
       }
     }
     
@@ -89,6 +106,7 @@ const StyledProductFilterSlider = styled(ProductFilterSlider)`
     input[type="number"]::-webkit-outer-spin-button, 
     input[type="number"]::-webkit-inner-spin-button { 
       -webkit-appearance: none;
+      
     } 
        
     /* For Firefox  */   

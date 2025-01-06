@@ -27,6 +27,7 @@ const FilterCheckboxGroup = ({ className, category, toggleFilterState, filters }
 };
 
 const StyledFilterCheckboxGroup = styled(FilterCheckboxGroup)`
+  margin-left: 5px;
 `;
 
 export default StyledFilterCheckboxGroup;

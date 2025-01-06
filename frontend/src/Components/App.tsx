@@ -14,8 +14,8 @@ const GlobalStyle = createGlobalStyle<{}>`
 
   :root {
     --navbar-height: 50px;
-    --space-after-navbar: 20px;
-    --site-left-space: 20px;
+    --space-after-navbar: 40px;
+    --site-left-space: 10px;
     box-sizing: border-box;
     font-weight: 400;
     font-family: "Funnel Sans", "Arial";

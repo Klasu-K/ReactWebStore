@@ -14,7 +14,7 @@ const ProductFilterDropdown = ({ className, label, children, startOpen }: Props)
   return (
     <div className={`${className} ${expanded ? "expanded" : ""}`}>
       <div className={`labelArea`} onClick={() => setExpanded(!expanded)}>
-        <h3>{label}</h3>
+        <h3 className="label">{label}</h3>
       </div>
       <div className={`content`}>
         {children}
@@ -28,6 +28,7 @@ const StyledProductFilterDropdown = styled(ProductFilterDropdown)`
 &:first-of-type {
   border-top: none
 }
+min-width: 230px;
 border-top: 1px #0000005c solid;
 margin: 0px 10px;
 padding-bottom: 10px;
@@ -38,7 +39,7 @@ padding-top: 5px;
 
   &::after {
     content: "▲";
-    font-size: 1.2em;
+    font-size: 1em;
     margin-left: auto;
     transition: transform .3s;
   }
@@ -47,17 +48,20 @@ padding-top: 5px;
 .content {
   max-height: 0px;
   overflow: hidden;
+  padding: 0px 0px;
 }
 
-h3 {
-  font-size: 1.5em; 
+.label {
+  text-transform: capitalize;
+  font-size: 1.3em; 
   font-weight: 500;
 }
 
 &.expanded {
   .content {
-    max-height: 1000px;
-    transition: all .7s;
+    padding: 10px 0;
+    max-height: 1000px; //max-height doesn't correlate with content height
+    transition: padding linear 0.01s, max-height 0.7s linear;
   }
   .labelArea::after {
     transform: rotateX(180deg);

@@ -77,6 +77,8 @@ const searchAndUpdateProducts = (productSetter: React.Dispatch<React.SetStateAct
 const StyledProductArea = styled(ProductArea)`
   flex: 1;
   min-height: 90vh;
+  max-width: 1500px;
+  margin-right: auto;
 `;
 
 const MockProduct = () => {

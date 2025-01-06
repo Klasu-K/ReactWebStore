@@ -129,14 +129,15 @@ const getActiveSimpleFilters = (simpleFiltersMap: simpleFiltersMap) => {
 }
 
 const StyledProductFilterArea = styled(ProductFilterArea)`
-  background-color: #f1f9ff;
   flex: 0 0 250px;
   height: auto;
   display: block; 
+  margin-left: auto;
+  padding: 0 max(var(--site-left-space), 2vw) 0 var(--site-left-space);
   > div {
     position: sticky;
     max-height: calc(100vh - var(--navbar-height));
-    padding-left: var(--site-left-space);
+    padding-top: var(--space-after-navbar);
     top: var(--navbar-height);
     overflow-y: auto;
 

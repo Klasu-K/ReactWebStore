@@ -11,7 +11,7 @@ const Footer = ({className} : FooterProps) => {
 }
 
 const StyledFooter = styled(Footer)`
-  background-color: black;
+  background-color: #2c2e30;
   height: 300px;
   width: 100%;
 `

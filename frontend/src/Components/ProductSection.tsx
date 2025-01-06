@@ -28,6 +28,7 @@ const ProductSection = ({className} : Props) => {
 const StyledProductSection = styled(ProductSection)`
   display: flex;
   width: 100%;
+  background:#f1f1f1;
 `
 
 export default StyledProductSection
