@@ -36,6 +36,7 @@ padding-top: 5px;
 .labelArea {
   min-height: 1.5em;
   display: flex;
+  text-shadow: 1px 1px 1px #c2c2c2dc;
 
   &::after {
     content: "▲";
@@ -49,6 +50,7 @@ padding-top: 5px;
   max-height: 0px;
   overflow: hidden;
   padding: 0px 0px;
+  
 }
 
 .label {

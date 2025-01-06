@@ -35,6 +35,7 @@ const StyledProduct = styled(Product)`
   text-align: center;
   flex-basis: 250px;
   min-height:350px;
+  box-shadow: 0px 1px 8px 0px rgba(0,0,0,0.05);
   &:hover {
     background-color: rgba(0, 0, 0, 0.082);   
   }
@@ -55,10 +56,12 @@ const StyledProduct = styled(Product)`
   .title {
     font-size: 1.4em;
     font-weight: 600;
+    text-shadow: 1px 1px 1px #c2c2c2dc;
     padding: 5px;
   }
   .price {
     font-size: 1.4em;
+    text-shadow: 1px 1px 1px #ffffff63;
   }
 
   .description {

@@ -14,12 +14,11 @@ declare global {
     simpleFilters: [string, string[]][]
     rangeFilters: [string, number, number][]
   } 
-
-  type simpleFilters = [string, string[]][]
-  type rangeFilters = [string, number, number][]
+  type simpleFilter = [string, string[]]
+  type rangeFilter = [string, number, number]
   interface productFilters {
-    simpleFilters: simpleFilters,
-    rangeFilters: rangeFilters
+    simpleFilters: simpleFilter[],
+    rangeFilters: rangeFilter[]
   }
 }
 export {}

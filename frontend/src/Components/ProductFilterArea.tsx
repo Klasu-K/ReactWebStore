@@ -60,7 +60,7 @@ const ProductFilterArea = ({className, filtersChanged} : Props) => {
 
   return(
     <aside className={className}>
-      <div>
+      <div className="sticky-div">
         {
           Array.from(simpleFiltersMap).map(([category, filters]) => (
             <ProductFilterDropdown label={category} key={category}>
@@ -110,7 +110,7 @@ const getFilteringOptions =  async () => {
 }
 
 const rangeFiltersMapToRangeFilters = (rangeFiltersMap: rangeFiltersMap) => {
-  const rangeFilters: rangeFilters = Array.from(rangeFiltersMap)
+  const rangeFilters: rangeFilter[] = Array.from(rangeFiltersMap)
   .map(([name, [min,max]]) => [name, min, max])
   return rangeFilters
 }
@@ -118,7 +118,7 @@ const rangeFiltersMapToRangeFilters = (rangeFiltersMap: rangeFiltersMap) => {
 const getActiveSimpleFilters = (simpleFiltersMap: simpleFiltersMap) => {
   //makes array with category as first value and array from filters that are active as second value; Ex. [[brand, [brand1, brand2]], [color, [blue, red, green]]
 
-  let activeFilters: simpleFilters = []
+  let activeFilters: simpleFilter[] = []
   simpleFiltersMap.forEach((filterMap, category) => {
     let activeArray: string[] = Array.from(filterMap).flatMap(([filter, active]) => active ? filter : [])
     if(activeArray.length != 0) {
@@ -134,12 +134,13 @@ const StyledProductFilterArea = styled(ProductFilterArea)`
   display: block; 
   margin-left: auto;
   padding: 0 max(var(--site-left-space), 2vw) 0 var(--site-left-space);
-  > div {
+  .sticky-div {
     position: sticky;
     max-height: calc(100vh - var(--navbar-height));
     padding-top: var(--space-after-navbar);
     top: var(--navbar-height);
     overflow-y: auto;
+    
 
     //Hide scrollbar for Chrome, Safari and Opera
     ::-webkit-scrollbar {

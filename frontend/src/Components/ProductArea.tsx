@@ -63,8 +63,8 @@ const loadItem = (setter: React.Dispatch<React.SetStateAction<Idata[]>>, id:numb
 }
 
 const searchAndUpdateProducts = (productSetter: React.Dispatch<React.SetStateAction<Idata[]>>, page: number, pageSize: number, productFilters: productFilters) => {
-  const simpleFilter: simpleFilters = productFilters.simpleFilters
-  const rangeFilter: rangeFilters = productFilters.rangeFilters
+  const simpleFilter: simpleFilter[] = productFilters.simpleFilters
+  const rangeFilter: rangeFilter[] = productFilters.rangeFilters
 
   productQueries.getMany(page, pageSize, simpleFilter, rangeFilter)
   .then((data) => {
@@ -78,7 +78,6 @@ const StyledProductArea = styled(ProductArea)`
   flex: 1;
   min-height: 90vh;
   max-width: 1500px;
-  margin-right: auto;
 `;
 
 const MockProduct = () => {

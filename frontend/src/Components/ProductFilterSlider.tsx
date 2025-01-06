@@ -97,6 +97,7 @@ const StyledProductFilterSlider = styled(ProductFilterSlider)`
       box-sizing: content-box;
       padding: 3px;
       width: 4em;
+      box-shadow: 0px 1px 8px 0px rgba(0,0,0,0.1);
       &:hover{
         box-shadow: 0 0 0 2px #000000;
       }

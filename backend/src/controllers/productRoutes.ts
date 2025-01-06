@@ -114,9 +114,9 @@ const queryForFilters = async (simpleFiltersProperties:string[], rangeFiltersPro
   })
   //console.dir(query, {depth: null}) //query
   let productFiltersObject = await Product.aggregate(query)
-  let simpleFilters = Object.entries(productFiltersObject[0].simpleFilters) as simpleFilters
+  let simpleFilters = Object.entries(productFiltersObject[0].simpleFilters) as simpleFilter[]
   let nestedRangeFilters: [string,[number,number]][] = Object.entries(productFiltersObject[0].rangeFilters)
-  let rangeFilters: rangeFilters = nestedRangeFilters
+  let rangeFilters: rangeFilter[] = nestedRangeFilters
   .map(([value, [min, max]]) => [value, min, max])
   //let productFilters = productFiltersObject
   let productFilters: productFilters = {
