@@ -3,16 +3,19 @@ import styled from "styled-components";
 interface Props {
   className?: string;
   simpleFilter: simpleFilter;
+  toggleSimpleFilterState: (category: string, filter: string) => void;
 }
 
-const AppliedSimpleFilter = ({ className, simpleFilter }: Props) => {
-  const removeSingleFilter = () => {
-    console.log("remove single")
-  }
+const AppliedSimpleFilter = ({ className, simpleFilter, toggleSimpleFilterState }: Props) => {
 
   const removeFilterGroup = () => {
-    console.log("remove group")
+    simpleFilter[1].forEach(filter => removeSingleFilter(filter))
   }
+
+  const removeSingleFilter = (filter: string) => {
+    toggleSimpleFilterState(simpleFilter[0], filter)
+  }
+
   return (
     <div className={className}>
       <div className="title-area">
@@ -21,7 +24,7 @@ const AppliedSimpleFilter = ({ className, simpleFilter }: Props) => {
       <div className="filters">
         {simpleFilter[1].map((filter) => {
           return (
-            <div className="filter" key={filter} onClick={removeSingleFilter}>
+            <div className="filter" key={filter} onClick={() => removeSingleFilter(filter)}>
               <span className="filter-inner-wrapper">{filter}</span>
             </div>
             )

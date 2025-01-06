@@ -4,16 +4,17 @@ import AppliedSimpleFilter from "./AppliedSimpleFilter";
 interface Props {
   className?: string;
   productFilters: productFilters;
+  toggleSimpleFilterState: (category: string, filter: string) => void;
 }
 
-const AppliedFiltersArea = ({ className, productFilters }: Props) => {
+const AppliedFiltersArea = ({ className, productFilters, toggleSimpleFilterState }: Props) => {
   let simpleFilters = productFilters.simpleFilters
   let rangeFilters = productFilters.rangeFilters
   return (
     <div className={className}>
       <div className="filter-wrapper">
         {simpleFilters.map((simpleFilter) => {
-          return <AppliedSimpleFilter simpleFilter={simpleFilter} key={simpleFilter[0]}/>
+          return <AppliedSimpleFilter simpleFilter={simpleFilter} key={simpleFilter[0]} toggleSimpleFilterState={toggleSimpleFilterState}/>
         })}
       </div> 
     </div>

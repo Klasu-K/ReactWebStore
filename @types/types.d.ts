@@ -11,14 +11,16 @@ declare global {
     pageSize: number;
     sortBy: "name" | "price";
     sortOrder: 1 | -1;
-    simpleFilters: [string, string[]][]
-    rangeFilters: [string, number, number][]
+    simpleFilters: simpleFilter[];
+    rangeFilters: rangeFilter[];
   } 
+  type rangeFiltersMap = Map<string, [number, number]>
+  type simpleFiltersMap = Map<string, Map<string,boolean>>
   type simpleFilter = [string, string[]]
   type rangeFilter = [string, number, number]
   interface productFilters {
     simpleFilters: simpleFilter[],
-    rangeFilters: rangeFilter[]
+    rangeFilters: rangeFilter[],
   }
 }
 export {}
