@@ -3,6 +3,7 @@ import axios from "axios";
 const baseURL = 'http://localhost:3003/api/products'
 
 const getFilters = () => {
+  console.log("%crequesting filters", "color: green;")
   const request = axios.get<productFilters>(`${baseURL}/productFilters`)
   .then(response => response.data)
   return request
@@ -18,6 +19,7 @@ type simpleFilters = [string, string[]][]
 type rangeFilters = [string, number, number][]
 
 const getMany = (page: number, pageSize: number, simpleFilters : simpleFilters, rangeFilters: rangeFilters) => {
+  console.log("%crequesting products", "color: green;")
   const productQuery : IproductQuery = {
     page: page,
     pageSize: pageSize,

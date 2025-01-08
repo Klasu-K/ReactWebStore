@@ -4,13 +4,14 @@ import ProductArea from './ProductArea'
 import { useState, useEffect } from "react";
 import AppliedFiltersArea from "./AppliedFiltersArea";
 import productQueries from "../services/productQueries";
+import { getRangeFilterIndexByName } from "../utils/rangeFilterUtils";
 
 interface Props {
   className?: string;
 }
 
 const ProductSection = ({className} : Props) => {
-  const [possibleFilters, setPossibleFiltersState] = useState<productFilters>()
+  const [possibleFilters, setPossibleFiltersState] = useState<productFilters>({simpleFilters: [], rangeFilters: []})
   const [rangeFilters, setRangeFiltersState] = useState<rangeFilter[]>([])
   const [simpleFiltersMap, setSimpleFiltersMapState] = useState<simpleFiltersMap>(
     new Map<string, Map<string,boolean>>()
@@ -40,15 +41,33 @@ const ProductSection = ({className} : Props) => {
   }
 
   const setRangeFilter = (filterName: string, min: number, max: number)  => {
-    let updatedRangeFilters = [...rangeFilters]
+    //check if filter values are defaults
+    let updatedRangeFilters = [...rangeFilters]    
     let filterToUpdateIndex = updatedRangeFilters.findIndex(filter => filter[0] === filterName)
-    if(filterToUpdateIndex = -1) {
+    if(filterToUpdateIndex === -1) {
       updatedRangeFilters.push([filterName, min, max])
     }
     else {
-      updatedRangeFilters[filterToUpdateIndex] = [filterName, min, max]
+      const defaultRangeIndex = getRangeFilterIndexByName(filterName, possibleFilters.rangeFilters)
+      const defaultRange = possibleFilters.rangeFilters[defaultRangeIndex]
+      if(min === defaultRange[1] && max === defaultRange[2]) {
+        updatedRangeFilters.splice(filterToUpdateIndex, 1)
+      }
+      else {
+        updatedRangeFilters[filterToUpdateIndex] = [filterName, min, max]
+      }
     }
     setRangeFiltersState(updatedRangeFilters)
+  }
+
+  const resetRangeFilter = (filterName: string) => {
+    let filterToUpdate = possibleFilters.rangeFilters.find(filter => filter[0] === filterName)
+    if(!filterToUpdate) {
+      console.error(`could not reset filter ${filterName}`)
+    }
+    else {
+      setRangeFilter(filterToUpdate[0], filterToUpdate[1], filterToUpdate[2])
+    }
   }
 
   return(
@@ -56,11 +75,12 @@ const ProductSection = ({className} : Props) => {
       <ProductFilterArea className="left-side"
       toggleSimpleFilterState = {toggleSimpleFilter}
       setRangeFilterState = {setRangeFilter}
-      possibleRangeFilters = {possibleFilters?.rangeFilters}
+      rangeFilters = {rangeFilters}
+      rangeFiltersValueRange = {possibleFilters.rangeFilters}
       simpleFiltersMap = {simpleFiltersMap}
       />
       <div className="right-side">
-        <AppliedFiltersArea productFilters={productFilters} toggleSimpleFilterState={toggleSimpleFilter}/>
+        <AppliedFiltersArea resetRangeFilter={resetRangeFilter} productFilters={productFilters} toggleSimpleFilterState={toggleSimpleFilter}/>
         <ProductArea productFilters={productFilters}/> 
       </div>
     </div>      
@@ -81,12 +101,6 @@ const calculateToggledSimpleFilters = (category: string, filter: string,simpleFi
 
 const getFilteringOptions =  async () => {
   return productQueries.getFilters()
-}
-
-const rangeFiltersMapToRangeFilters = (rangeFiltersMap: rangeFiltersMap) => {
-  const rangeFilters: rangeFilter[] = Array.from(rangeFiltersMap)
-  .map(([name, [min,max]]) => [name, min, max])
-  return rangeFilters
 }
 
 const getActiveSimpleFilters = (simpleFiltersMap: simpleFiltersMap) => {

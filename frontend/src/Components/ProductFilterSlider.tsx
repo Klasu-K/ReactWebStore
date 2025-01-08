@@ -1,27 +1,32 @@
 import styled from "styled-components";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { getRangeFilterByName, rangeFilterExists } from "../utils/rangeFilterUtils";
 
 interface Props {
   className?: string;
-  min: number;
-  max: number;
+  rangeFilters: rangeFilter[];
+  filterName: string;
+  rangeLowerBound: number;
+  rangeUpperBound: number;
   newValueSelected: (min: number, max: number) => void;
 }
 
-const ProductFilterSlider = ({ className, min, max, newValueSelected }: Props) => {
-
-  const [[currentMin, currentMax], setRange] = useState([min,max])
-
-  //clamp range between min and max
-  if(currentMin < min || currentMax > max) {
-    let _min = currentMin < min ? min : currentMin
-    let _max = currentMax > max ? max : currentMax
-    //return function early to render with only clamped range
-    setRange([_min,_max])
-    return;
+const ProductFilterSlider = ({ className, rangeLowerBound, rangeUpperBound, rangeFilters, filterName, newValueSelected }: Props) => {
+  let rangeFilterMin = rangeLowerBound
+  let rangeFilterMax = rangeUpperBound
+  if(rangeFilterExists(filterName, rangeFilters)) {
+    const rangeFilter = getRangeFilterByName(filterName, rangeFilters) as rangeFilter
+    rangeFilterMin = rangeFilter[1]
+    rangeFilterMax = rangeFilter[2]
   }
+  
+  const [[currentMin, currentMax], setRange] = useState([rangeFilterMin,rangeFilterMax])
+
+  useEffect(() => {
+    setRange([rangeFilterMin, rangeFilterMax])
+  }, [rangeFilterMin, rangeFilterMax])
 
   let timeoutID = useRef(0)
   const NewRangeSelected = () => {
@@ -39,8 +44,8 @@ const ProductFilterSlider = ({ className, min, max, newValueSelected }: Props) =
             setRange([Number(e.target.value), currentMax])
             NewRangeSelected()
           }}
-          min={min}
-          max={max}
+          min={rangeLowerBound}
+          max={rangeUpperBound}
         />
 
         <input type="number" 
@@ -49,18 +54,18 @@ const ProductFilterSlider = ({ className, min, max, newValueSelected }: Props) =
             setRange([currentMin, Number(e.target.value)])
             NewRangeSelected()
           }}
-          min={min}
-          max={max}
+          min={rangeLowerBound}
+          max={rangeUpperBound}
         />
       </div>
-      <Slider className="test"
+      <Slider
       range
-      min={min}
-      max={max}
+      min={rangeLowerBound}
+      max={rangeUpperBound}
       value={[currentMin, currentMax]}
       onChange={(newRange) => setRange(newRange as [number,number])}
       onChangeComplete={NewRangeSelected}
-      defaultValue={[min,max]}
+      defaultValue={[rangeLowerBound,rangeUpperBound]}
       />
     </div>
     

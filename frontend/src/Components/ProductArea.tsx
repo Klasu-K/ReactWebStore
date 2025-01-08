@@ -69,7 +69,6 @@ const searchAndUpdateProducts = (productSetter: React.Dispatch<React.SetStateAct
   productQueries.getMany(page, pageSize, simpleFilter, rangeFilter)
   .then((data) => {
     productSetter(data)
-    console.log(data)
   })
 }
 

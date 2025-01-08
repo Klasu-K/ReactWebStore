@@ -19,7 +19,7 @@ const AppliedSimpleFilter = ({ className, simpleFilter, toggleSimpleFilterState 
   return (
     <div className={className}>
       <div className="title-area">
-        <span className="title" onClick={removeFilterGroup}>{simpleFilter?.[0]}</span>
+        <span className="title" onClick={removeFilterGroup}>{simpleFilter[0]}</span>
       </div>
       <div className="filters">
         {simpleFilter[1].map((filter) => {
@@ -35,7 +35,6 @@ const AppliedSimpleFilter = ({ className, simpleFilter, toggleSimpleFilterState 
 };
 
 const StyledAppliedSimpleFilter = styled(AppliedSimpleFilter)`
-  /* border: 1px solid #0000001a; */
   display: flex;
   .title-area {
     min-width: 180px;
@@ -43,6 +42,8 @@ const StyledAppliedSimpleFilter = styled(AppliedSimpleFilter)`
   .title {
     font-weight: 600;
     font-size: 22px;
+    display: block;
+    transform: translateY(-2px);
     &:hover {
       text-decoration: line-through;
       text-decoration-color: #000000;
@@ -51,26 +52,23 @@ const StyledAppliedSimpleFilter = styled(AppliedSimpleFilter)`
     }
   }
   .filters {
+    
     font-weight: 400;
     font-size: 20px;
     padding-left: 10px;
     display: flex;
+    flex-wrap: wrap;
     --gap-between-filters: 15px;
-    gap: var(--gap-between-filters);
+    column-gap: var(--gap-between-filters);
     
   }
 
   .filter {
+   /*  color: #535353; */
+    white-space: nowrap;
     word-spacing: -2px;
     position: relative;
     &::after {
-      //border element
-      /* content: "";
-      border-right: 1px solid gray;
-      position: absolute;
-      right: calc(var(--gap-between-filters) / -2);
-      top: 7px;
-      bottom: 7px; */
       content: "\\2715";
       border: none;
       position: relative;

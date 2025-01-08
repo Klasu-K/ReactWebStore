@@ -2,6 +2,7 @@ import styled from "styled-components";
 import ProductFilterDropdown from "./ProductFilterDropdown";
 import FilterCheckboxGroup from "./FilterCheckboxGroup";
 import ProductFilterSlider from "./ProductFilterSlider";
+import { getRangeFilterByName } from "../utils/rangeFilterUtils";
 import { useEffect, useMemo, useRef, useState } from "react";
 import productQueries from "../services/productQueries";
 
@@ -11,14 +12,12 @@ interface Props {
   className?: string;
   toggleSimpleFilterState: (category: string, filter: string) => void;
   setRangeFilterState: (filterName: string, min: number, max: number) => void;
-  possibleRangeFilters: rangeFilter[] | undefined; //TODO this should not need undefined
+  rangeFilters: rangeFilter[];
+  rangeFiltersValueRange: rangeFilter[];
   simpleFiltersMap: simpleFiltersMap;
-  
-
-
 }
 
-const ProductFilterArea = ({className, toggleSimpleFilterState, setRangeFilterState, possibleRangeFilters, simpleFiltersMap} : Props) => {
+const ProductFilterArea = ({className, toggleSimpleFilterState, setRangeFilterState, rangeFilters, simpleFiltersMap, rangeFiltersValueRange} : Props) => {
   return(
     <aside className={className}>
       <div className="sticky-div">
@@ -30,13 +29,15 @@ const ProductFilterArea = ({className, toggleSimpleFilterState, setRangeFilterSt
           ))
         }
         {
-          //renders sliders basen on possible rangefilters, but keeps track of selection in RangeFiltersMap
-          possibleRangeFilters?.map(([name, min, max]) =>(
+          //renders sliders basen on rangeFiltersValueRange, but keeps track of selection in RangeFiltersMap
+          rangeFiltersValueRange.map(([name, lowerBound, upperBound]) => (
             <ProductFilterDropdown label={name} startOpen key={name}>
               <ProductFilterSlider
                 newValueSelected={(minHandle, maxHandle) => {setRangeFilterState(name, minHandle, maxHandle)}}
-                min={min}
-                max={max}
+                rangeFilters={rangeFilters}
+                filterName={name}
+                rangeLowerBound={lowerBound}
+                rangeUpperBound={upperBound}
               />
             </ProductFilterDropdown>
           ))
