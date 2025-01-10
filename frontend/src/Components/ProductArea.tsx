@@ -1,11 +1,9 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 
-import productImages from "../assets/data/productImageURLs.json"
 import Product from "./Product"
 import ProductContainer from "./ProductContainer"
 import LoadProductsBtn from "./LoadProductsBtn";
-import productImage from "../assets/images/laptop.jpg"
 
 import productQueries from "../services/productQueries"
 
@@ -16,10 +14,9 @@ interface Props {
 const ProductArea = ({ className, productFilters}: Props) => {
   const [products, setProducts] = useState<Idata[]>([])
 
-  //let imgURL = productImages.urls[0]
-  let imgURL = productImage
   const pageSize = 100
-  //counts page by amount of products loaded, propably very buggy later on
+  //counts page by amount of products loaded, propably very buggy later on //TODO
+  
   const page = Math.floor(products.length/pageSize)
   useEffect(() => {
     searchAndUpdateProducts(
@@ -39,11 +36,11 @@ const ProductArea = ({ className, productFilters}: Props) => {
   return (
     <section className={className}>
       <ProductContainer>
-        {products.map(product => 
+        {products.map((product, index) => 
           <Product
             key={product.id} 
             title={product.name} 
-            imageURL={imgURL} 
+            imageNumber={product.numberId + 1} 
             desc={product.description} 
             price={product.price}>
           </Product>
@@ -53,14 +50,6 @@ const ProductArea = ({ className, productFilters}: Props) => {
     </section>
   );
 };
-
-//this is not doing anything usefull, just testing
-const loadItem = (setter: React.Dispatch<React.SetStateAction<Idata[]>>, id:number) => {
-  productQueries.getOne(id)
-  .then((data) => {
-    setter(products => products.concat(data))
-  })
-}
 
 const searchAndUpdateProducts = (productSetter: React.Dispatch<React.SetStateAction<Idata[]>>, page: number, pageSize: number, productFilters: productFilters) => {
   const simpleFilter: simpleFilter[] = productFilters.simpleFilters
@@ -76,24 +65,7 @@ const searchAndUpdateProducts = (productSetter: React.Dispatch<React.SetStateAct
 const StyledProductArea = styled(ProductArea)`
   flex: 1;
   min-height: 90vh;
-  max-width: 1500px;
+  width: 100%;
 `;
-
-const MockProduct = () => {
-  let min = 0
-  let max = 0
-  let randomInt = Math.floor(Math.random() * (max - min + 1)) + min
-  //let imgURL = productImages.urls[randomInt]
-  let imgURL = productImage
-  return(
-    <Product 
-    title="gaming pc" 
-    imageURL={imgURL} 
-    desc={"this is cheap".repeat(randomInt)} 
-    price={200}>
-    </Product>
-  )
-}
-
 
 export default StyledProductArea;

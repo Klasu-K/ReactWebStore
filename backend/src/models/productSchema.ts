@@ -1,6 +1,7 @@
 import mongoose from "mongoose"
 
 interface Iproducts {
+  numberId: number,
   name: string,
   price: number,
   description: string,
@@ -14,6 +15,7 @@ interface Iproducts {
 
 const productSchema = new mongoose.Schema<Iproducts>({
   name: {type: String, required: true},
+  numberId: {type: Number, requiredPaths: true},
   price: {type: Number, required: true},
   description: {type: String, required: true},
   category: {type: String, required: true},

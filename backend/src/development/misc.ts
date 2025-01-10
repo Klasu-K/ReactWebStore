@@ -5,8 +5,13 @@ import mongoose from "mongoose";
 
 const copyDataToDataBase = async () =>  {
   Product.collection.deleteMany({})
-  productsData.products.forEach(item => {
-    let product = new Product<Iproducts>(item)
+  productsData.products.forEach((item, index) => {
+    let productData : Iproducts = {
+      numberId: index,
+      ...item
+    }
+    
+    let product = new Product<Iproducts>(productData)
     product.save().then(data => console.log(data))
   });
 }

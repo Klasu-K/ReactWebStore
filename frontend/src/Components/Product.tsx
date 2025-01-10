@@ -1,28 +1,45 @@
 import styled from "styled-components"
+import { Cloudinary } from "@cloudinary/url-gen/index";
+import { AdvancedImage } from "@cloudinary/react";
+import { fill } from "@cloudinary/url-gen/actions/resize";
+import { background } from "@cloudinary/url-gen/qualifiers/focusOn";
 
 interface productProps {
   className?: string;
   title : string; 
-  imageURL: string;
+  imageNumber: number;
   price: number;
   desc: string;
 }
 
 
+const Product = ({className, title, imageNumber, price, desc}: productProps) => {
+  
 
-const Product = ({className, title, imageURL, price, desc}: productProps) => {
+  const myImage = getImage(imageNumber)
   return (
     <article className={className}>
       <div className="title-area">
         <h3 className="title">{title}</h3>
       </div>
-      <img src={imageURL}></img>
+      <AdvancedImage className="product-image" cldImg={myImage}/>
       <div className="priceDiv">
         <h4 className="price">{price}€</h4>
       </div>
       <p className="description">{desc}</p>
     </article>
   )
+}
+
+const getImage = (imageNumber: number) => {
+  const cloudinary = new Cloudinary({
+    cloud: {
+      cloudName: 'dlmnpup7q' //TODO store cloudName elsewhere
+    }
+  });
+  let myImage = cloudinary.image(`products/phone-${imageNumber}`); 
+  myImage.resize(fill().width(300).height(300));
+  return myImage
 }
 
 const StyledProduct = styled(Product)`  
@@ -69,12 +86,9 @@ const StyledProduct = styled(Product)`
     font-weight: 400;
   }
 
-  img {
+  .product-image {
     max-width: 100%;
-    /* width: 100%; */
-    /* max-height: 200px; */
-    padding: 0 10px;
-    
+    padding: 0 0px;
   }
 `
 

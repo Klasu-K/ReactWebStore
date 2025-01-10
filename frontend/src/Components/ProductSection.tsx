@@ -123,8 +123,10 @@ const StyledProductSection = styled(ProductSection)`
   width: 100%;
   background: var(--producSection-mainColor);
   .right-side {
+    flex-grow: 1;
     margin-right: auto;
     padding-right: var(--site-min-right-space);
+    max-width: 1500px;
   }
 `
 

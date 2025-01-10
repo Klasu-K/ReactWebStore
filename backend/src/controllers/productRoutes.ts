@@ -9,6 +9,9 @@ const productRouter = Router()
 productRouter.get('/test', async (req, res) => {
   //used to test or exeute any functionality on runtime
   //await misc.copyDataToDataBase()
+  //TODO remove on production
+  console.log("test")
+  await misc.copyDataToDataBase()
   res.send()
 })
 
@@ -52,13 +55,14 @@ productRouter.post('', async (req, res) => {
 
   const queryFilter = makeProductFilter(simpleFilters, rangeFilters)
 
-  console.log(queryFilter)
+  //console.log(queryFilter)
   let products = await Product.find(queryFilter)
     .sort({[sortBy]: sortOrder})
     .skip(page*pageSize)
     .limit(pageSize)
+    .select('-__v')
     .catch(e => {throw e})
-  console.log("products:", products)
+  //console.log("products:", products)
   res.send(products)
 })
 
@@ -124,7 +128,7 @@ const queryForFilters = async (simpleFiltersProperties:string[], rangeFiltersPro
     rangeFilters,
   }
     
-  console.dir(productFilters, {depth: null})
+  //console.dir(productFilters, {depth: null})
   return productFilters
 }
 

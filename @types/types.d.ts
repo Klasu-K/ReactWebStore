@@ -1,6 +1,7 @@
 declare global {
   interface Idata {
     id: number;
+    numberId: number;
     name: string;
     price: number;
     description: string;
