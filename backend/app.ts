@@ -6,7 +6,7 @@ import cors from "cors"
 import mongoose from "mongoose";
 
 const app = express()
-app.use(cors())
+app.use(cors()) //TODO remove in production
 app.use(express.json())
 app.use("/api/products", productRouter)
 app.use(unknownEndpoint)

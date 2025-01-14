@@ -28,11 +28,6 @@ const ProductArea = ({ className, productFilters}: Props) => {
     )
   }, [productFilters])
   
-  const loadProductsClick = () => {
-    productQueries.getFilters()
-    .then(filters => console.log(filters))
-  }
-  
   return (
     <section className={className}>
       <ProductContainer>
@@ -46,7 +41,6 @@ const ProductArea = ({ className, productFilters}: Props) => {
           </Product>
         )}
       </ProductContainer>
-      <LoadProductsBtn onClick={loadProductsClick}/>
     </section>
   );
 };

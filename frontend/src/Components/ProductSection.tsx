@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import AppliedFiltersArea from "./AppliedFiltersArea";
 import productQueries from "../services/productQueries";
 import { getRangeFilterIndexByName } from "../utils/rangeFilterUtils";
+import ProductFilterAreaWrapper from "./ProductFilterAreaWrapper";
+import ToggleVisibilityButton_Filter from "./showChildren/buttonStyles/ToggleVisibilityButton_filter";
 
 interface Props {
   className?: string;
@@ -16,6 +18,8 @@ const ProductSection = ({className} : Props) => {
   const [simpleFiltersMap, setSimpleFiltersMapState] = useState<simpleFiltersMap>(
     new Map<string, Map<string,boolean>>()
   )
+
+
   let productFilters : productFilters = {
     simpleFilters: getActiveSimpleFilters(simpleFiltersMap),
     rangeFilters: rangeFilters,
@@ -72,15 +76,19 @@ const ProductSection = ({className} : Props) => {
 
   return(
     <div className={className}>
-      <ProductFilterArea className="left-side"
-      toggleSimpleFilterState = {toggleSimpleFilter}
-      setRangeFilterState = {setRangeFilter}
-      rangeFilters = {rangeFilters}
-      rangeFiltersValueRange = {possibleFilters.rangeFilters}
-      simpleFiltersMap = {simpleFiltersMap}
-      />
+      <ProductFilterAreaWrapper>
+        <ProductFilterArea
+          toggleSimpleFilterState = {toggleSimpleFilter}
+          setRangeFilterState = {setRangeFilter}
+          rangeFilters = {rangeFilters}
+          rangeFiltersValueRange = {possibleFilters.rangeFilters}
+          simpleFiltersMap = {simpleFiltersMap}>
+        </ProductFilterArea>
+      </ProductFilterAreaWrapper>
+      
       <div className="right-side">
         <AppliedFiltersArea resetRangeFilter={resetRangeFilter} productFilters={productFilters} toggleSimpleFilterState={toggleSimpleFilter}/>
+        <ToggleVisibilityButton_Filter/>
         <ProductArea productFilters={productFilters}/> 
       </div>
     </div>      
@@ -116,17 +124,22 @@ const getActiveSimpleFilters = (simpleFiltersMap: simpleFiltersMap) => {
   return activeFilters
 }
 
-
 const StyledProductSection = styled(ProductSection)`
   --producSection-mainColor: #f1f1f1;
-  display: flex;
   width: 100%;
   background: var(--producSection-mainColor);
+  display: flex;
   .right-side {
     flex-grow: 1;
     margin-right: auto;
-    padding-right: var(--site-min-right-space);
+    padding: 0 var(--site-min-right-space);
     max-width: 1500px;
+  }
+
+  @media (max-width: 800px) {
+    .right-side {
+      padding-right: 0;
+    }
   }
 `
 
