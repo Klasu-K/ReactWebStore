@@ -7,10 +7,10 @@ interface Iproducts {
   description: string,
   category: string,
   brand: string,
-  operatingSystem: string,
-  storageCapacity: number,
-  cameraFeatures: string,
-  batteryCapacity: number,
+  "operating system": string,
+  "storage capacity": number,
+  "camera type": string,
+  "battery capacity": number,
 }
 
 const productSchema = new mongoose.Schema<Iproducts>({
@@ -20,10 +20,10 @@ const productSchema = new mongoose.Schema<Iproducts>({
   description: {type: String, required: true},
   category: {type: String, required: true},
   brand: {type: String, required: true},
-  operatingSystem: {type: String, required: true},
-  storageCapacity: {type: Number, required: true},
-  cameraFeatures: {type: String, required: true},
-  batteryCapacity: {type: Number, required: true},
+  "operating system": {type: String, required: true},
+  "storage capacity": {type: Number, required: true},
+  "camera type": {type: String, required: true},
+  "battery capacity": {type: Number, required: true},
 }) 
 productSchema.set("toJSON", {
   virtuals: true

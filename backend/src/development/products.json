@@ -6,10 +6,10 @@
       "description": "Flagship smartphone with 5G connectivity and stunning AMOLED display.",
       "category": "Smartphones",
       "brand": "TechNova",
-      "operatingSystem": "Android",
-      "storageCapacity": 128,
-      "cameraFeatures": "Triple-Camera",
-      "batteryCapacity": 4500
+      "operating system": "Android",
+      "storage capacity": 128,
+      "camera type": "Triple-Camera",
+      "battery capacity": 4500
     },
     {
       "name": "ZenMobile Z5",
@@ -17,10 +17,10 @@
       "description": "Affordable smartphone with solid performance and decent camera.",
       "category": "Budget Phones",
       "brand": "ZenMobile",
-      "operatingSystem": "Android",
-      "storageCapacity": 64,
-      "cameraFeatures": "Dual-Camera",
-      "batteryCapacity": 3000
+      "operating system": "Android",
+      "storage capacity": 64,
+      "camera type": "Dual-Camera",
+      "battery capacity": 3000
     },
     {
       "name": "EliteTech Gaming Pro",
@@ -28,10 +28,10 @@
       "description": "High-performance gaming phone with customizable RGB lighting.",
       "category": "Gaming Phones",
       "brand": "EliteTech",
-      "operatingSystem": "Android",
-      "storageCapacity": 512,
-      "cameraFeatures": "Quad-Camera",
-      "batteryCapacity": 6000
+      "operating system": "Android",
+      "storage capacity": 512,
+      "camera type": "Quad-Camera",
+      "battery capacity": 6000
     },
     {
       "name": "MegaPixel Fold",
@@ -39,10 +39,10 @@
       "description": "Innovative foldable smartphone with dual displays and powerful specs.",
       "category": "Foldable Phones",
       "brand": "MegaPixel",
-      "operatingSystem": "Android",
-      "storageCapacity": 256,
-      "cameraFeatures": "Triple-Camera",
-      "batteryCapacity": 4500
+      "operating system": "Android",
+      "storage capacity": 256,
+      "camera type": "Triple-Camera",
+      "battery capacity": 4500
     },
     {
       "name": "ProCell Edge",
@@ -50,10 +50,10 @@
       "description": "Premium smartphone with edge-to-edge display and top-notch performance.",
       "category": "Smartphones",
       "brand": "ProCell",
-      "operatingSystem": "iOS",
-      "storageCapacity": 128,
-      "cameraFeatures": "Dual-Camera",
-      "batteryCapacity": 3700
+      "operating system": "iOS",
+      "storage capacity": 128,
+      "camera type": "Dual-Camera",
+      "battery capacity": 3700
     },
     {
       "name": "TechNova BudgetLite",
@@ -61,10 +61,10 @@
       "description": "Basic smartphone with essential features for everyday use.",
       "category": "Budget Phones",
       "brand": "TechNova",
-      "operatingSystem": "Android",
-      "storageCapacity": 32,
-      "cameraFeatures": "Single-Camera",
-      "batteryCapacity": 2500
+      "operating system": "Android",
+      "storage capacity": 32,
+      "camera type": "Single-Camera",
+      "battery capacity": 2500
     },
     {
       "name": "ZenMobile Play",
@@ -72,10 +72,10 @@
       "description": "Mid-range smartphone designed for casual gaming and social media.",
       "category": "Smartphones",
       "brand": "ZenMobile",
-      "operatingSystem": "Android",
-      "storageCapacity": 128,
-      "cameraFeatures": "Dual-Camera",
-      "batteryCapacity": 4000
+      "operating system": "Android",
+      "storage capacity": 128,
+      "camera type": "Dual-Camera",
+      "battery capacity": 4000
     },
     {
       "name": "EliteTech Hyper",
@@ -83,10 +83,10 @@
       "description": "High-end smartphone with a 120Hz refresh rate and stunning visuals.",
       "category": "Flagship Devices",
       "brand": "EliteTech",
-      "operatingSystem": "Android",
-      "storageCapacity": 256,
-      "cameraFeatures": "Triple-Camera",
-      "batteryCapacity": 5000
+      "operating system": "Android",
+      "storage capacity": 256,
+      "camera type": "Triple-Camera",
+      "battery capacity": 5000
     },
     {
       "name": "MegaPixel Zoomer",
@@ -94,10 +94,10 @@
       "description": "Smartphone with advanced optical zoom capabilities and sleek design.",
       "category": "Smartphones",
       "brand": "MegaPixel",
-      "operatingSystem": "Android",
-      "storageCapacity": 128,
-      "cameraFeatures": "Triple-Camera",
-      "batteryCapacity": 3500
+      "operating system": "Android",
+      "storage capacity": 128,
+      "camera type": "Triple-Camera",
+      "battery capacity": 3500
     },
     {
       "name": "ProCell Ultra",
@@ -105,10 +105,10 @@
       "description": "Ultra-thin smartphone with exceptional performance and premium materials.",
       "category": "Flagship Devices",
       "brand": "ProCell",
-      "operatingSystem": "iOS",
-      "storageCapacity": 512,
-      "cameraFeatures": "Dual-Camera",
-      "batteryCapacity": 4200
+      "operating system": "iOS",
+      "storage capacity": 512,
+      "camera type": "Dual-Camera",
+      "battery capacity": 4200
     },
     {
       "name": "TechNova Lite",
@@ -116,10 +116,10 @@
       "description": "Lightweight smartphone with long battery life and reliable performance.",
       "category": "Budget Phones",
       "brand": "TechNova",
-      "operatingSystem": "Android",
-      "storageCapacity": 64,
-      "cameraFeatures": "Single-Camera",
-      "batteryCapacity": 3500
+      "operating system": "Android",
+      "storage capacity": 64,
+      "camera type": "Single-Camera",
+      "battery capacity": 3500
     },
     {
       "name": "ZenMobile Max",
@@ -127,10 +127,10 @@
       "description": "High-capacity smartphone with a large display and excellent sound quality.",
       "category": "Smartphones",
       "brand": "ZenMobile",
-      "operatingSystem": "Android",
-      "storageCapacity": 256,
-      "cameraFeatures": "Triple-Camera",
-      "batteryCapacity": 5000
+      "operating system": "Android",
+      "storage capacity": 256,
+      "camera type": "Triple-Camera",
+      "battery capacity": 5000
     },
     {
       "name": "EliteTech Vortex",
@@ -138,10 +138,10 @@
       "description": "Flagship smartphone with an impressive camera system and performance.",
       "category": "Flagship Devices",
       "brand": "EliteTech",
-      "operatingSystem": "Android",
-      "storageCapacity": 128,
-      "cameraFeatures": "Quad-Camera",
-      "batteryCapacity": 4500
+      "operating system": "Android",
+      "storage capacity": 128,
+      "camera type": "Quad-Camera",
+      "battery capacity": 4500
     },
     {
       "name": "MegaPixel Classic",
@@ -149,10 +149,10 @@
       "description": "Classic smartphone design with modern specifications for everyday use.",
       "category": "Smartphones",
       "brand": "MegaPixel",
-      "operatingSystem": "Android",
-      "storageCapacity": 64,
-      "cameraFeatures": "Dual-Camera",
-      "batteryCapacity": 3000
+      "operating system": "Android",
+      "storage capacity": 64,
+      "camera type": "Dual-Camera",
+      "battery capacity": 3000
     },
     {
       "name": "ProCell Mini",
@@ -160,10 +160,10 @@
       "description": "Compact smartphone with a focus on portability and efficiency.",
       "category": "Budget Phones",
       "brand": "ProCell",
-      "operatingSystem": "iOS",
-      "storageCapacity": 64,
-      "cameraFeatures": "Single-Camera",
-      "batteryCapacity": 2800
+      "operating system": "iOS",
+      "storage capacity": 64,
+      "camera type": "Single-Camera",
+      "battery capacity": 2800
     },
     {
       "name": "TechNova Flex",
@@ -171,10 +171,10 @@
       "description": "Foldable smartphone with advanced multitasking features and flexible design.",
       "category": "Foldable Phones",
       "brand": "TechNova",
-      "operatingSystem": "Android",
-      "storageCapacity": 256,
-      "cameraFeatures": "Triple-Camera",
-      "batteryCapacity": 4500
+      "operating system": "Android",
+      "storage capacity": 256,
+      "camera type": "Triple-Camera",
+      "battery capacity": 4500
     },
     {
       "name": "ZenMobile Go",
@@ -182,10 +182,10 @@
       "description": "Budget-friendly smartphone with reliable features for daily tasks.",
       "category": "Budget Phones",
       "brand": "ZenMobile",
-      "operatingSystem": "Android",
-      "storageCapacity": 32,
-      "cameraFeatures": "Single-Camera",
-      "batteryCapacity": 2400
+      "operating system": "Android",
+      "storage capacity": 32,
+      "camera type": "Single-Camera",
+      "battery capacity": 2400
     },
     {
       "name": "EliteTech Titan",
@@ -193,10 +193,10 @@
       "description": "Powerful smartphone with robust security features and premium design.",
       "category": "Flagship Devices",
       "brand": "EliteTech",
-      "operatingSystem": "Android",
-      "storageCapacity": 512,
-      "cameraFeatures": "Quad-Camera",
-      "batteryCapacity": 4800
+      "operating system": "Android",
+      "storage capacity": 512,
+      "camera type": "Quad-Camera",
+      "battery capacity": 4800
     },
     {
       "name": "MegaPixel Infinity",
@@ -204,10 +204,10 @@
       "description": "Smartphone with endless display and exceptional camera quality.",
       "category": "Smartphones",
       "brand": "MegaPixel",
-      "operatingSystem": "Android",
-      "storageCapacity": 128,
-      "cameraFeatures": "Triple-Camera",
-      "batteryCapacity": 3700
+      "operating system": "Android",
+      "storage capacity": 128,
+      "camera type": "Triple-Camera",
+      "battery capacity": 3700
     },
     {
       "name": "ProCell Stream",
@@ -215,10 +215,10 @@
       "description": "Smartphone designed for streaming with a high-resolution display.",
       "category": "Smartphones",
       "brand": "ProCell",
-      "operatingSystem": "iOS",
-      "storageCapacity": 256,
-      "cameraFeatures": "Dual-Camera",
-      "batteryCapacity": 3500
+      "operating system": "iOS",
+      "storage capacity": 256,
+      "camera type": "Dual-Camera",
+      "battery capacity": 3500
     },
     {
       "name": "TechNova Pro Lite",
@@ -226,10 +226,10 @@
       "description": "Mid-range smartphone with excellent performance and battery life.",
       "category": "Smartphones",
       "brand": "TechNova",
-      "operatingSystem": "Android",
-      "storageCapacity": 128,
-      "cameraFeatures": "Dual-Camera",
-      "batteryCapacity": 4000
+      "operating system": "Android",
+      "storage capacity": 128,
+      "camera type": "Dual-Camera",
+      "battery capacity": 4000
     },
     {
       "name": "ZenMobile Shift",
@@ -237,10 +237,10 @@
       "description": "Versatile smartphone with expandable storage and a vibrant display.",
       "category": "Smartphones",
       "brand": "ZenMobile",
-      "operatingSystem": "Android",
-      "storageCapacity": 64,
-      "cameraFeatures": "Triple-Camera",
-      "batteryCapacity": 3000
+      "operating system": "Android",
+      "storage capacity": 64,
+      "camera type": "Triple-Camera",
+      "battery capacity": 3000
     },
     {
       "name": "EliteTech Curve",
@@ -248,10 +248,10 @@
       "description": "Curved screen smartphone with innovative features and sleek design.",
       "category": "Flagship Devices",
       "brand": "EliteTech",
-      "operatingSystem": "Android",
-      "storageCapacity": 256,
-      "cameraFeatures": "Quad-Camera",
-      "batteryCapacity": 4600
+      "operating system": "Android",
+      "storage capacity": 256,
+      "camera type": "Quad-Camera",
+      "battery capacity": 4600
     },
     {
       "name": "MegaPixel Slider",
@@ -259,10 +259,10 @@
       "description": "Unique slider smartphone with a large display and excellent specs.",
       "category": "Foldable Phones",
       "brand": "MegaPixel",
-      "operatingSystem": "Android",
-      "storageCapacity": 512,
-      "cameraFeatures": "Triple-Camera",
-      "batteryCapacity": 4500
+      "operating system": "Android",
+      "storage capacity": 512,
+      "camera type": "Triple-Camera",
+      "battery capacity": 4500
     },
     {
       "name": "ProCell Travel",
@@ -270,10 +270,10 @@
       "description": "Compact smartphone ideal for travel with global connectivity options.",
       "category": "Budget Phones",
       "brand": "ProCell",
-      "operatingSystem": "iOS",
-      "storageCapacity": 64,
-      "cameraFeatures": "Single-Camera",
-      "batteryCapacity": 2800
+      "operating system": "iOS",
+      "storage capacity": 64,
+      "camera type": "Single-Camera",
+      "battery capacity": 2800
     },
     {
       "name": "TechNova Spark",
@@ -281,10 +281,10 @@
       "description": "Feature-rich smartphone with a large display and long battery life.",
       "category": "Budget Phones",
       "brand": "TechNova",
-      "operatingSystem": "Android",
-      "storageCapacity": 128,
-      "cameraFeatures": "Dual-Camera",
-      "batteryCapacity": 3700
+      "operating system": "Android",
+      "storage capacity": 128,
+      "camera type": "Dual-Camera",
+      "battery capacity": 3700
     },
     {
       "name": "ZenMobile Nova",
@@ -292,10 +292,10 @@
       "description": "Stylish smartphone with premium finish and reliable performance.",
       "category": "Smartphones",
       "brand": "ZenMobile",
-      "operatingSystem": "Android",
-      "storageCapacity": 128,
-      "cameraFeatures": "Dual-Camera",
-      "batteryCapacity": 4000
+      "operating system": "Android",
+      "storage capacity": 128,
+      "camera type": "Dual-Camera",
+      "battery capacity": 4000
     },
     {
       "name": "EliteTech Note",
@@ -303,10 +303,10 @@
       "description": "Smartphone with a large screen and high-performance stylus for productivity.",
       "category": "Smartphones",
       "brand": "EliteTech",
-      "operatingSystem": "Android",
-      "storageCapacity": 256,
-      "cameraFeatures": "Triple-Camera",
-      "batteryCapacity": 4500
+      "operating system": "Android",
+      "storage capacity": 256,
+      "camera type": "Triple-Camera",
+      "battery capacity": 4500
     },
     {
       "name": "MegaPixel Max",
@@ -314,10 +314,10 @@
       "description": "Smartphone with a powerful processor and impressive camera setup.",
       "category": "Smartphones",
       "brand": "MegaPixel",
-      "operatingSystem": "Android",
-      "storageCapacity": 256,
-      "cameraFeatures": "Triple-Camera",
-      "batteryCapacity": 4000
+      "operating system": "Android",
+      "storage capacity": 256,
+      "camera type": "Triple-Camera",
+      "battery capacity": 4000
     },
     {
       "name": "ProCell Lite",
@@ -325,10 +325,10 @@
       "description": "Affordable smartphone with decent specifications for everyday tasks.",
       "category": "Budget Phones",
       "brand": "ProCell",
-      "operatingSystem": "iOS",
-      "storageCapacity": 64,
-      "cameraFeatures": "Single-Camera",
-      "batteryCapacity": 3000
+      "operating system": "iOS",
+      "storage capacity": 64,
+      "camera type": "Single-Camera",
+      "battery capacity": 3000
     },
     {
       "name": "TechNova Edge",
@@ -336,10 +336,10 @@
       "description": "Smartphone with curved edges and an immersive display experience.",
       "category": "Flagship Devices",
       "brand": "TechNova",
-      "operatingSystem": "Android",
-      "storageCapacity": 512,
-      "cameraFeatures": "Quad-Camera",
-      "batteryCapacity": 4800
+      "operating system": "Android",
+      "storage capacity": 512,
+      "camera type": "Quad-Camera",
+      "battery capacity": 4800
     },
     {
       "name": "ZenMobile Pop",
@@ -347,10 +347,10 @@
       "description": "Colorful smartphone designed for young users with great features.",
       "category": "Budget Phones",
       "brand": "ZenMobile",
-      "operatingSystem": "Android",
-      "storageCapacity": 32,
-      "cameraFeatures": "Single-Camera",
-      "batteryCapacity": 2400
+      "operating system": "Android",
+      "storage capacity": 32,
+      "camera type": "Single-Camera",
+      "battery capacity": 2400
     },
     {
       "name": "EliteTech Alpha",
@@ -358,10 +358,10 @@
       "description": "Smartphone with advanced security features and a sleek design.",
       "category": "Flagship Devices",
       "brand": "EliteTech",
-      "operatingSystem": "Android",
-      "storageCapacity": 256,
-      "cameraFeatures": "Triple-Camera",
-      "batteryCapacity": 4000
+      "operating system": "Android",
+      "storage capacity": 256,
+      "camera type": "Triple-Camera",
+      "battery capacity": 4000
     },
     {
       "name": "MegaPixel Pro",
@@ -369,10 +369,10 @@
       "description": "Pro smartphone with professional-grade camera capabilities.",
       "category": "Smartphones",
       "brand": "MegaPixel",
-      "operatingSystem": "Android",
-      "storageCapacity": 512,
-      "cameraFeatures": "Quad-Camera",
-      "batteryCapacity": 4600
+      "operating system": "Android",
+      "storage capacity": 512,
+      "camera type": "Quad-Camera",
+      "battery capacity": 4600
     }
   ]  
 }
