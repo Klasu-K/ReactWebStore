@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
-interface FooterProps {
+interface Props {
   className?: string;
 }
 
-const Footer = ({className} : FooterProps) => {
+const Footer = ({className} : Props) => {
   return(
     <footer className={className}></footer>
   )
 }
 
 const StyledFooter = styled(Footer)`
-  background-color: #2c2e30;
+  background-color: var(--footer-color);
   height: 300px;
   width: 100%;
 `

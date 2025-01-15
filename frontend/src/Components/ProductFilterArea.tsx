@@ -2,16 +2,13 @@ import styled from "styled-components";
 import ProductFilterDropdown from "./ProductFilterDropdown";
 import FilterCheckboxGroup from "./FilterCheckboxGroup";
 import ProductFilterSlider from "./ProductFilterSlider";
-import { getRangeFilterByName } from "../utils/rangeFilterUtils";
-import { useEffect, useMemo, useRef, useState } from "react";
-import productQueries from "../services/productQueries";
 
 
 
 interface Props {
   className?: string;
-  toggleSimpleFilterState: (category: string, filter: string) => void;
-  setRangeFilterState: (filterName: string, min: number, max: number) => void;
+  toggleSimpleFilterState: (key: SimpleFilterKey) => void;
+  setRangeFilterState: (rangeFilter: rangeFilter) => void;
   rangeFilters: rangeFilter[];
   rangeFiltersValueRange: rangeFilter[];
   simpleFiltersMap: simpleFiltersMap;
@@ -23,7 +20,7 @@ const ProductFilterArea = ({className, toggleSimpleFilterState, setRangeFilterSt
       {
         Array.from(simpleFiltersMap).map(([category, filters]) => (
           <ProductFilterDropdown label={category} key={category}>
-            <FilterCheckboxGroup category={category} filters={filters} toggleFilterState={(toggleSimpleFilterState)}/>
+            <FilterCheckboxGroup category={category} filters={filters} toggleFilterState={toggleSimpleFilterState}/>
           </ProductFilterDropdown>
         ))
       }
@@ -32,7 +29,7 @@ const ProductFilterArea = ({className, toggleSimpleFilterState, setRangeFilterSt
         rangeFiltersValueRange.map(([name, lowerBound, upperBound]) => (
           <ProductFilterDropdown label={name} key={name}>
             <ProductFilterSlider
-              newValueSelected={(minHandle, maxHandle) => {setRangeFilterState(name, minHandle, maxHandle)}}
+              newValueSelected={(minHandle, maxHandle) => {setRangeFilterState([name, minHandle, maxHandle])}}
               rangeFilters={rangeFilters}
               filterName={name}
               rangeLowerBound={lowerBound}

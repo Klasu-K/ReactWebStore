@@ -1,7 +1,7 @@
 
 import NavBar from './NavBar'
 import Footer from './Footer'
-import StyledProductSection from './ProductSection'
+import ProductSection from './ProductSection'
 import GlobalStyle from './GlobalStyle'
 import {ShowChildrenProvider} from './showChildren/ShowChildrenContext'
 
@@ -13,7 +13,7 @@ const App = () => {
       <NavBar/>
       <main>
         <ShowChildrenProvider>
-          <StyledProductSection/>
+          <ProductSection/>
         </ShowChildrenProvider>
       </main>
       <Footer></Footer>

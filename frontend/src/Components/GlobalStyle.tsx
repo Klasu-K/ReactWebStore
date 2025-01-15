@@ -9,18 +9,14 @@ const GlobalStyle = createGlobalStyle<{}>`
 
   :root {
     --navbar-height: 50px;
+    --navbar-color: #dadada;
+    --footer-color: #2c2e30;
     --space-after-navbar: 40px;
     --site-left-space: 10px;
     --site-min-right-space: 50px;
     box-sizing: border-box;
     font-weight: 400;
     font-family: "Funnel Sans", "Arial";
-  }
-  
-  body {
-    /* @media (max-width: 800px) {
-      overflow: hidden;
-    } */
   }
 
   *, *:before, *:after {

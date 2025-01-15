@@ -3,7 +3,7 @@ import styled from "styled-components";
 interface Props {
   className?: string;
   simpleFilter: simpleFilter;
-  toggleSimpleFilterState: (category: string, filter: string) => void;
+  toggleSimpleFilterState: (key: SimpleFilterKey) => void;
 }
 
 const AppliedSimpleFilter = ({ className, simpleFilter, toggleSimpleFilterState }: Props) => {
@@ -13,7 +13,7 @@ const AppliedSimpleFilter = ({ className, simpleFilter, toggleSimpleFilterState 
   }
 
   const removeSingleFilter = (filter: string) => {
-    toggleSimpleFilterState(simpleFilter[0], filter)
+    toggleSimpleFilterState({category: simpleFilter[0], filter})
   }
 
   return (

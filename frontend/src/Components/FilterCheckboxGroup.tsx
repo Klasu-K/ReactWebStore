@@ -5,7 +5,7 @@ interface Props {
   className?: string;
   category: string;
   filters: Map<string, boolean>;
-  toggleFilterState: (category: string, filter : string) => void;
+  toggleFilterState: (key: SimpleFilterKey) => void;
 }
 
 /**
@@ -14,13 +14,12 @@ interface Props {
  * @param toggleFilterState triggered on onChange
  */
 const FilterCheckboxGroup = ({ className, category, toggleFilterState, filters }: Props) => {
-  const filterCategory = category
   const filterArray = Array.from(filters).map(([filter]) => filter)
   
   return (
     <div className={className}>
       {
-        filterArray.map(filter => <FilterCheckbox label={filter} checked={filters.get(filter) as boolean} onChange={() => toggleFilterState(filterCategory, filter)} key={filter}/>)
+        filterArray.map(filter => <FilterCheckbox label={filter} checked={filters.get(filter) as boolean} onChange={() => toggleFilterState({category, filter})} key={filter}/>)
       }      
     </div>
   );

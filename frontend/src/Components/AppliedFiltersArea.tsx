@@ -5,7 +5,7 @@ import StyledAppliedRangeFilter from "./AppliedRangeFilter";
 interface Props {
   className?: string;
   productFilters: productFilters;
-  toggleSimpleFilterState: (category: string, filter: string) => void;
+  toggleSimpleFilterState: (key: SimpleFilterKey) => void;
   resetRangeFilter : (filterName: string) => void;
 }
 

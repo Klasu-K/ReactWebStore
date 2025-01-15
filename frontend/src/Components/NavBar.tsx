@@ -1,20 +1,23 @@
 import styled from "styled-components";
 
-const NavBar = ({className}: {className? : string}) => {
+interface Props {
+  className?: string
+}
+
+const NavBar = ({className}: Props) => {
   return(
     <nav className={className}></nav>
   )
 }
 
 const StyledNavBar = styled(NavBar)`
-  background-color: #dadada;
+  background-color: var(--navbar-color);
   height: var(--navbar-height);
-  width: 100%;
   position: sticky;
-  left: 0px;
-  top: 0px;
+  right: 0;
+  left: 0;
+  top: 0;
   z-index: 100;
 `
-
 
 export default StyledNavBar

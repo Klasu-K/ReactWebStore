@@ -17,6 +17,10 @@ declare global {
   } 
   type rangeFiltersMap = Map<string, [number, number]>
   type simpleFiltersMap = Map<string, Map<string,boolean>>
+  type SimpleFilterKey = {
+    category: string;
+    filter: string;
+  };
   type simpleFilter = [string, string[]]
   type rangeFilter = [string, number, number]
   interface productFilters {
