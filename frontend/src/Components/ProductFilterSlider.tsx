@@ -17,7 +17,7 @@ const ProductFilterSlider = ({ className, rangeLowerBound, rangeUpperBound, rang
   let rangeFilterMin = rangeLowerBound
   let rangeFilterMax = rangeUpperBound
   if(rangeFilterExists(filterName, rangeFilters)) {
-    const rangeFilter = getRangeFilterByName(filterName, rangeFilters) as rangeFilter
+    const rangeFilter = getRangeFilterByName(filterName, rangeFilters)! //has to exist
     rangeFilterMin = rangeFilter[1]
     rangeFilterMax = rangeFilter[2]
   }
@@ -59,13 +59,13 @@ const ProductFilterSlider = ({ className, rangeLowerBound, rangeUpperBound, rang
         />
       </div>
       <Slider
-      range
-      min={rangeLowerBound}
-      max={rangeUpperBound}
-      value={[currentMin, currentMax]}
-      onChange={(newRange) => setRange(newRange as [number,number])}
-      onChangeComplete={NewRangeSelected}
-      defaultValue={[rangeLowerBound,rangeUpperBound]}
+        range
+        min={rangeLowerBound}
+        max={rangeUpperBound}
+        value={[currentMin, currentMax]}
+        onChange={(newRange) => setRange(newRange as [number,number])}
+        onChangeComplete={NewRangeSelected}
+        defaultValue={[rangeLowerBound,rangeUpperBound]}
       />
     </div>
     
@@ -108,7 +108,7 @@ const StyledProductFilterSlider = styled(ProductFilterSlider)`
       }
     }
     
-    //hidin number input spinbox
+    /* hidin number input spinbox */
     input[type="number"]::-webkit-outer-spin-button, 
     input[type="number"]::-webkit-inner-spin-button { 
       -webkit-appearance: none;
@@ -118,6 +118,7 @@ const StyledProductFilterSlider = styled(ProductFilterSlider)`
     /* For Firefox  */   
     input[type="number"] { 
       -moz-appearance: textfield; 
+      appearance: textfield;
     }
   }
 `;

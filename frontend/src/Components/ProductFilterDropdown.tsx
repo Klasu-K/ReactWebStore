@@ -13,10 +13,10 @@ const ProductFilterDropdown = ({ className, label, children, startOpen }: Props)
 
   return (
     <div className={`${className} ${expanded ? "expanded" : ""}`}>
-      <div className={`labelArea`} onClick={() => setExpanded(!expanded)}>
+      <div className={"labelArea"} onClick={() => setExpanded(!expanded)}>
         <h3 className="label">{label}</h3>
       </div>
-      <div className={`content`}>
+      <div className={"content"}>
         {children}
       </div>
     </div>

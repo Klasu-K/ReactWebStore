@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import ProductFilterArea from './ProductFilterArea'
-import ProductArea from './ProductArea'
+import ProductFilterArea from "./ProductFilterArea"
+import ProductArea from "./ProductArea"
 import { useState, useEffect } from "react";
 import AppliedFiltersArea from "./AppliedFiltersArea";
 import productQueries from "../services/productQueries";
@@ -70,7 +70,6 @@ const setRangeFilter = (newRangeFilter : rangeFilter, rangeFilters: rangeFilter[
   const filterName = newRangeFilter[0]
   const min = newRangeFilter[1]
   const max  = newRangeFilter[2]
-  //check if filter values are defaults
   let updatedRangeFilters = [...rangeFilters]    
   let filterToUpdateIndex = updatedRangeFilters.findIndex(filter => filter[0] === filterName)
   if(filterToUpdateIndex === -1) {
@@ -79,6 +78,7 @@ const setRangeFilter = (newRangeFilter : rangeFilter, rangeFilters: rangeFilter[
   else {
     const defaultRangeIndex = getRangeFilterIndexByName(filterName, rangeFiltersDefaults)
     const defaultRange = rangeFiltersDefaults[defaultRangeIndex]
+    //check if filter values are defaults
     if(min === defaultRange[1] && max === defaultRange[2]) {
       updatedRangeFilters.splice(filterToUpdateIndex, 1)
     }
@@ -96,7 +96,7 @@ const calculateToggledSimpleFilters = ({category, filter}: SimpleFilterKey,simpl
     updatedStates.get(category)?.set(filter, !previsiousState)
   }
   else {
-    console.error(`filter with value: "${filter}" doens't exist`)
+    console.error(`filter with value: "${filter}" doens"t exist`)
   }
   return updatedStates
 }
@@ -106,8 +106,6 @@ const getFilteringOptions =  async () => {
 }
 
 const getActiveSimpleFilters = (simpleFiltersMap: simpleFiltersMap) => {
-  //makes array with category as first value and array from filters that are active as second value; Ex. [[brand, [brand1, brand2]], [color, [blue, red, green]]
-
   let activeFilters: simpleFilter[] = []
   simpleFiltersMap.forEach((filterMap, category) => {
     let activeArray: string[] = Array.from(filterMap).flatMap(([filter, active]) => active ? filter : [])

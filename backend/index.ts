@@ -1,6 +1,7 @@
 import {PORT} from "./src/utils/config";
 import {app} from "./app"
+import coloredConsole from "./src/utils/coloredConsole";
 
 app.listen(PORT, () => {
-  console.log(`\x1b[32m server running on port ${PORT}\x1b[0m`)
+  coloredConsole.log(`server running on port ${PORT}`, coloredConsole.TextColor.Green)
 })

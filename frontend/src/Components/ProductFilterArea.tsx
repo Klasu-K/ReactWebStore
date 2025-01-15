@@ -20,7 +20,11 @@ const ProductFilterArea = ({className, toggleSimpleFilterState, setRangeFilterSt
       {
         Array.from(simpleFiltersMap).map(([category, filters]) => (
           <ProductFilterDropdown label={category} key={category}>
-            <FilterCheckboxGroup category={category} filters={filters} toggleFilterState={toggleSimpleFilterState}/>
+            <FilterCheckboxGroup 
+              category={category} 
+              filters={filters} 
+              toggleFilterState={toggleSimpleFilterState}
+            />
           </ProductFilterDropdown>
         ))
       }

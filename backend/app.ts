@@ -4,6 +4,7 @@ import {productRouter} from "./src/controllers/productRoutes"
 import {MONGODB_URL} from "./src/utils/config";
 import cors from "cors"
 import mongoose from "mongoose";
+import coloredConsole from "./src/utils/coloredConsole"
 
 const app = express()
 app.use(cors()) //TODO remove in production
@@ -14,10 +15,10 @@ app.use(unknownEndpoint)
 mongoose.set("strictQuery", true)
 mongoose.connect(MONGODB_URL) 
   .then(_result => {
-    console.log('\x1b[32m connected to MongoDB \x1b[0m')
+    coloredConsole.log("connected to MongoDB", coloredConsole.TextColor.Green)
   })
   .catch((error) => {
-    console.log('error connecting to MongoDB:', error.message)
+    console.log("error connecting to MongoDB:", error.message)
   })
 
 export {app}

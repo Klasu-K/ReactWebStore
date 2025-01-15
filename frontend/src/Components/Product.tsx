@@ -2,7 +2,6 @@ import styled from "styled-components"
 import { Cloudinary } from "@cloudinary/url-gen/index";
 import { AdvancedImage } from "@cloudinary/react";
 import { fill } from "@cloudinary/url-gen/actions/resize";
-import { background } from "@cloudinary/url-gen/qualifiers/focusOn";
 
 interface productProps {
   className?: string;
@@ -34,7 +33,7 @@ const Product = ({className, title, imageNumber, price, desc}: productProps) => 
 const getImage = (imageNumber: number) => {
   const cloudinary = new Cloudinary({
     cloud: {
-      cloudName: 'dlmnpup7q' //TODO store cloudName elsewhere
+      cloudName: "dlmnpup7q" //TODO store cloudName elsewhere
     }
   });
   let myImage = cloudinary.image(`products/phone-${imageNumber}`); 

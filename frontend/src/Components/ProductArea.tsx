@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 import Product from "./Product"
 import ProductContainer from "./ProductContainer"
-import LoadProductsBtn from "./LoadProductsBtn";
 
 import productQueries from "../services/productQueries"
 
@@ -11,13 +10,15 @@ interface Props {
   className?: string;
   productFilters: productFilters;
 }
+
+type productSetter = React.Dispatch<React.SetStateAction<Idata[]>>
+
 const ProductArea = ({ className, productFilters}: Props) => {
   const [products, setProducts] = useState<Idata[]>([])
 
   const pageSize = 100
-  //counts page by amount of products loaded, propably very buggy later on //TODO
-  
-  const page = Math.floor(products.length/pageSize)
+  const page = 0 //supports pagination, not used currently due to small amount of products
+  //TODO maybe add ordering option
   useEffect(() => {
     searchAndUpdateProducts(
       setProducts, page, pageSize, 
@@ -45,11 +46,11 @@ const ProductArea = ({ className, productFilters}: Props) => {
   );
 };
 
-const searchAndUpdateProducts = (productSetter: React.Dispatch<React.SetStateAction<Idata[]>>, page: number, pageSize: number, productFilters: productFilters) => {
-  const simpleFilter: simpleFilter[] = productFilters.simpleFilters
-  const rangeFilter: rangeFilter[] = productFilters.rangeFilters
+const searchAndUpdateProducts = (productSetter: productSetter, page: number, pageSize: number, productFilters: productFilters) => {
+  const simpleFilters: simpleFilter[] = productFilters.simpleFilters
+  const rangeFilters: rangeFilter[] = productFilters.rangeFilters
 
-  productQueries.getMany(page, pageSize, simpleFilter, rangeFilter)
+  productQueries.getMany(page, pageSize, simpleFilters, rangeFilters)
   .then((data) => {
     productSetter(data)
   })

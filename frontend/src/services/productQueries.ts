@@ -1,6 +1,6 @@
 import axios from "axios";
 
-//const baseURL = 'http://localhost:3003/api/products'
+//const baseURL = "http://localhost:3003/api/products"
 const baseURL = getApiBaseUrl()
 
 const getFilters = () => {
@@ -42,7 +42,7 @@ function getApiBaseUrl() {
   /* function is hoisted up so it's not arrow function */
   //!COULD cause problems on production, test if error is because of this
   const { protocol, hostname } = window.location;
-  const backendPort = '3003';
+  const backendPort = "3003";
   return `${protocol}//${hostname}:${backendPort}/api/products`;
 };
 

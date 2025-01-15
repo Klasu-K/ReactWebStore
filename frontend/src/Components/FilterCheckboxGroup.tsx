@@ -9,7 +9,6 @@ interface Props {
 }
 
 /**
- * @param checkboxTargets creates checkbox for all values
  * @param filters Map<string, boolean> handles checkbox state, needs to contain all values of checkboxTargets
  * @param toggleFilterState triggered on onChange
  */
@@ -19,7 +18,12 @@ const FilterCheckboxGroup = ({ className, category, toggleFilterState, filters }
   return (
     <div className={className}>
       {
-        filterArray.map(filter => <FilterCheckbox label={filter} checked={filters.get(filter) as boolean} onChange={() => toggleFilterState({category, filter})} key={filter}/>)
+        filterArray.map(filter => <FilterCheckbox 
+          label={filter} 
+          checked={filters.get(filter) as boolean} 
+          onChange={() => toggleFilterState({category, filter})} 
+          key={filter}/>
+        )
       }      
     </div>
   );

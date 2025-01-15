@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components"
 import funnelSansFont from "../assets/fonts/Funnel_Sans/FunnelSans-VariableFont_wght.ttf"
 
 const GlobalStyle = createGlobalStyle<{}>`

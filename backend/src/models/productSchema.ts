@@ -25,13 +25,13 @@ const productSchema = new mongoose.Schema<Iproducts>({
   cameraFeatures: {type: String, required: true},
   batteryCapacity: {type: Number, required: true},
 }) 
-productSchema.set('toJSON', {
+productSchema.set("toJSON", {
   virtuals: true
 });
 
-//ensures that query with invalid filter like:
-//find({xxx: "test"}) doesn't get converted to:
-//find({}) and return all objects
+/* ensures that query with invalid filter like:
+find({xxx: "test"}) doesn't get converted to:
+find({}) and return all objects */
 productSchema.set("strictQuery", false)
 
 const Product: mongoose.Model<Iproducts> = mongoose.model<Iproducts>("products", productSchema) 
