@@ -9,7 +9,7 @@ interface Props {
 const Button = ({className} :Props) => {
   return (
     <ToggleVisibilityButton className={className}>
-      <img className="close-icon" src={closeIcon}></img>
+      <img className="close-icon" src={closeIcon} alt="close filter area"></img>
     </ToggleVisibilityButton>
   )
 }
@@ -19,6 +19,7 @@ const ToggleVisibilityButton_Close = styled(Button)`
   display: flex;
   align-items: center;
   transition: all 1s;
+  background-color: transparent;
   .close-icon {
     width: 20px;
     height: 20px;

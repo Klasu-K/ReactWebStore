@@ -38,6 +38,7 @@ const ProductFilterSlider = ({ className, rangeLowerBound, rangeUpperBound, rang
   return (
     <div className={className}>
       <div className="values">
+        //TODO input boxes are useless because of bugging, fix it
         <input type="number" 
           value={Math.round(currentMin)} 
           onChange={(e) => {

@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle<{}>`
     --footer-color: #2c2e30;
     --space-after-navbar: 40px;
     --site-left-space: 10px;
-    --site-min-right-space: 50px;
+    --productarea-padding-x: 30px;
     box-sizing: border-box;
     font-weight: 400;
     font-family: "Funnel Sans", "Arial";

@@ -134,20 +134,24 @@ const toggleSimpleFilter = (key: SimpleFilterKey, setSimpleFiltersStates: setSim
 }
 
 const StyledProductSection = styled(ProductSection)`
-  --producSection-mainColor: #f1f1f1;
+  --producSection-mainColor: #D9DFC6;
+  --test-product-color:#EFF3EA;
+  --test-price-color:#FFFDF0;
+  padding: var(--space-after-navbar) 0 100px var(--productarea-padding-x);
+  margin: 0 auto;
   width: 100%;
   background: var(--producSection-mainColor);
   display: flex;
   .right-side {
     flex-grow: 1;
-    margin-right: auto;
-    padding: 0 var(--site-min-right-space);
+    padding: 0 var(--productarea-padding-x);
     max-width: 1500px;
   }
 
   @media (max-width: 800px) {
+    padding: 50px 0;
     .right-side {
-      padding-right: 0;
+      padding: 0px 10px;
     }
   }
 `

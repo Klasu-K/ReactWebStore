@@ -10,7 +10,7 @@ const Button = ({className}: Props) => {
   return (
     <ToggleVisibilityButton className={className}>
       <div>Filter</div>
-      <img className="filter-icon" src={filterIcon}></img>
+      <img className="filter-icon" alt="toggle filters" src={filterIcon}></img>
     </ToggleVisibilityButton>
   )
 }

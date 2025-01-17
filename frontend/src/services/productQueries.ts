@@ -11,7 +11,7 @@ const getFilters = () => {
 }
 
 const getOne = (id: number) => {
-  const request = axios.get<Idata>(`${baseURL}/${id}`)
+  const request = axios.get<productData>(`${baseURL}/${id}`)
   .then(response => response.data)
   return request
 }
@@ -29,10 +29,9 @@ const getMany = (page: number, pageSize: number, simpleFilters : simpleFilters, 
     simpleFilters: simpleFilters,
     rangeFilters: rangeFilters,
   }
-  const request = axios.post<Idata[]>(baseURL, productQuery)
+  const request = axios.post<productData[]>(baseURL, productQuery)
   .then(response => 
     {
-      console.log(response.data)
       return response.data
     })
   return request

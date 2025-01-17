@@ -28,9 +28,8 @@ const StyledProductFilterDropdown = styled(ProductFilterDropdown)`
 &:first-of-type {
   border-top: none
 }
-min-width: 230px;
 border-top: 1px #0000005c solid;
-margin: 0px 10px;
+margin-left: 10px;
 padding-bottom: 10px;
 padding-top: 5px;
 .labelArea {
@@ -55,7 +54,7 @@ padding-top: 5px;
 
 .label {
   text-transform: capitalize;
-  font-size: 1.3em; 
+  font-size: 16px; 
   font-weight: 500;
 }
 

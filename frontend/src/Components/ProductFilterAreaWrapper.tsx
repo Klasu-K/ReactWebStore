@@ -8,12 +8,14 @@ interface Props {
   children?: ReactNode;
 }
 
-const ShowChild = ({className, children}: Props) => {
+const ProductFilterAreaWrapper = ({className, children}: Props) => {
   return (
     <DisplayChildren>
       <aside className={className}>
           <div className="sticky-div">
-            <ToggleVisibility/>
+            <div className="closetab-btn-wrapper">
+              <ToggleVisibility/>
+            </div>
             {children}
           </div>
       </aside>
@@ -21,16 +23,20 @@ const ShowChild = ({className, children}: Props) => {
   )
 }
 
-const StyledShowChild = styled(ShowChild)`
-  flex: 0 0 250px;
+const StyledProductFilterAreaWrapper = styled(ProductFilterAreaWrapper)`
+  flex: 0 0 200px;
+  overflow: hidden;
   height: auto;
-  margin-left: auto;
-  padding-right: var(--site-left-space);
+
+  .closetab-btn-wrapper {
+    display: block;
+    width: max-content;
+    margin: 0 7px 0 auto;
+  }
   
   .sticky-div {
     position: sticky;
     max-height: calc(100vh - var(--navbar-height));
-    padding-top: var(--space-after-navbar);
     top: var(--navbar-height);
     overflow-y: auto;
     
@@ -51,4 +57,4 @@ const StyledShowChild = styled(ShowChild)`
     background-color: var(--producSection-mainColor);
   }
 `
-export default StyledShowChild
+export default StyledProductFilterAreaWrapper

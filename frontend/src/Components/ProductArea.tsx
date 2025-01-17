@@ -11,10 +11,10 @@ interface Props {
   productFilters: productFilters;
 }
 
-type productSetter = React.Dispatch<React.SetStateAction<Idata[]>>
+type productSetter = React.Dispatch<React.SetStateAction<productData[]>>
 
 const ProductArea = ({ className, productFilters}: Props) => {
-  const [products, setProducts] = useState<Idata[]>([])
+  const [products, setProducts] = useState<productData[]>([])
 
   const pageSize = 100
   const page = 0 //supports pagination, not used currently due to small amount of products
@@ -34,11 +34,8 @@ const ProductArea = ({ className, productFilters}: Props) => {
       <ProductContainer>
         {products.map((product, index) => 
           <Product
-            key={product.id} 
-            title={product.name} 
-            imageNumber={product.numberId + 1} 
-            desc={product.description} 
-            price={product.price}>
+            key={product.id}
+            productData={product}>
           </Product>
         )}
       </ProductContainer>
@@ -52,6 +49,7 @@ const searchAndUpdateProducts = (productSetter: productSetter, page: number, pag
 
   productQueries.getMany(page, pageSize, simpleFilters, rangeFilters)
   .then((data) => {
+    console.log(data)
     productSetter(data)
   })
 }

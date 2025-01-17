@@ -1,10 +1,16 @@
 declare global {
-  interface Idata {
+  interface productData {
     id: number;
     numberId: number;
     name: string;
     price: number;
     description: string;
+    category: string,
+    brand: string,
+    "operating system": string,
+    "storage capacity": number,
+    "camera type": string,
+    "battery capacity": number, 
   }
 
   interface IproductQuery {
