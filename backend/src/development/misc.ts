@@ -1,5 +1,5 @@
 import productsData from "./products.json"
-import {Product, Iproducts} from "../models/productSchema"
+import {Product, Iproducts} from "../models/productSchema.js"
 
 
 const copyDataToDataBase = async () =>  {

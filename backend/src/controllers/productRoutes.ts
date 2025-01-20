@@ -1,7 +1,7 @@
 import {Router} from "express"
-import {Product} from "../models/productSchema"
-import misc from "../development/misc"
-import {makeProductFilter, queryForFilters} from "../utils/filterQueries"
+import {Product} from "../models/productSchema.js"
+import misc from "../development/misc.js"
+import {makeProductFilter, queryForFilters} from "../utils/filterQueries.js"
 
 const productRouter = Router()
 

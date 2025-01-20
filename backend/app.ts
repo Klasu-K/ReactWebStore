@@ -1,10 +1,10 @@
 import express from "express"
-import { unknownEndpoint } from "./src/utils/middleware"
-import {productRouter} from "./src/controllers/productRoutes"
-import {MONGODB_URL} from "./src/utils/config";
+import { unknownEndpoint } from "./src/utils/middleware.js"
+import {productRouter} from "./src/controllers/productRoutes.js"
+import {MONGODB_URL} from "./src/utils/config.js"
 import cors from "cors"
-import mongoose from "mongoose";
-import coloredConsole from "./src/utils/coloredConsole"
+import mongoose from "mongoose"
+import coloredConsole from "./src/utils/coloredConsole.js"
 
 const app = express()
 app.use(cors()) //TODO remove in production

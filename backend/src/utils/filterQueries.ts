@@ -1,4 +1,4 @@
-import {Product} from "../models/productSchema"
+import {Product} from "../models/productSchema.js"
 
 const makeProductFilter = (simpleFilters : [string, string[]][], rangeFilters : [string, number, number][]) =>
   {
