@@ -26,24 +26,25 @@ const ProductFilterSlider = ({ className, rangeLowerBound, rangeUpperBound, rang
 
   useEffect(() => {
     setRange([rangeFilterMin, rangeFilterMax])
+    console.log("aa")
+    // debugger
   }, [rangeFilterMin, rangeFilterMax])
 
   let timeoutID = useRef(0)
-  const NewRangeSelected = () => {
+  const NewRangeSelected = (newRange : [number, number]) => {
     //timeouts prevent accidental spam when using arrowkeys to change number input
     clearTimeout(timeoutID.current)
-    timeoutID.current = setTimeout(() => newValueSelected(currentMin, currentMax), 50)
+    timeoutID.current = setTimeout(() => newValueSelected(newRange[0], newRange[1]), 1000)
   }
 
   return (
     <div className={className}>
       <div className="values">
-        //TODO input boxes are useless because of bugging, fix it
         <input type="number" 
           value={Math.round(currentMin)} 
           onChange={(e) => {
             setRange([Number(e.target.value), currentMax])
-            NewRangeSelected()
+            NewRangeSelected([Number(e.target.value), currentMax])
           }}
           min={rangeLowerBound}
           max={rangeUpperBound}
@@ -53,7 +54,7 @@ const ProductFilterSlider = ({ className, rangeLowerBound, rangeUpperBound, rang
           value={Math.round(currentMax)} 
           onChange={(e) => {
             setRange([currentMin, Number(e.target.value)])
-            NewRangeSelected()
+            NewRangeSelected([currentMin, Number(e.target.value)])
           }}
           min={rangeLowerBound}
           max={rangeUpperBound}
@@ -65,7 +66,10 @@ const ProductFilterSlider = ({ className, rangeLowerBound, rangeUpperBound, rang
         max={rangeUpperBound}
         value={[currentMin, currentMax]}
         onChange={(newRange) => setRange(newRange as [number,number])}
-        onChangeComplete={NewRangeSelected}
+        onChangeComplete={(newRange) => {
+          const minMax = newRange as [number, number]
+          newValueSelected(minMax[0], minMax[1])
+        }}
         defaultValue={[rangeLowerBound,rangeUpperBound]}
       />
     </div>

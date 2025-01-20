@@ -10,23 +10,19 @@ interface Props {
 
 const ProductFilterAreaWrapper = ({className, children}: Props) => {
   return (
-    <DisplayChildren>
-      <aside className={className}>
-          <div className="sticky-div">
-            <div className="closetab-btn-wrapper">
-              <ToggleVisibility/>
-            </div>
-            {children}
+    <aside className={className}>
+        <div className="sticky-div">
+          <div className="closetab-btn-wrapper">
+            <ToggleVisibility/>
           </div>
-      </aside>
-    </DisplayChildren>
+          {children}
+        </div>
+    </aside>
   )
-}
+} 
 
 const StyledProductFilterAreaWrapper = styled(ProductFilterAreaWrapper)`
-  flex: 0 0 200px;
-  overflow: hidden;
-  height: auto;
+  height: 100%;
 
   .closetab-btn-wrapper {
     display: block;
@@ -37,7 +33,7 @@ const StyledProductFilterAreaWrapper = styled(ProductFilterAreaWrapper)`
   .sticky-div {
     position: sticky;
     max-height: calc(100vh - var(--navbar-height));
-    top: var(--navbar-height);
+    top: calc(var(--navbar-height) + var(--space-after-navbar));
     overflow-y: auto;
     
 
@@ -52,6 +48,7 @@ const StyledProductFilterAreaWrapper = styled(ProductFilterAreaWrapper)`
   @media (max-width: 800px) {
     z-index: 20;
     position: fixed;
+    max-width: 100%;
     inset: 0;
     height: 100vh;
     background-color: var(--producSection-mainColor);

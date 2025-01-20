@@ -4,6 +4,7 @@ import Footer from "./Footer"
 import ProductSection from "./ProductSection"
 import GlobalStyle from "./GlobalStyle"
 import {ShowChildrenProvider} from "./showChildren/ShowChildrenContext"
+import ProductSectionWrapper from "./ProductSectionWrapper"
 
 const App = () => {
 
@@ -13,7 +14,9 @@ const App = () => {
       <NavBar/>
       <main>
         <ShowChildrenProvider>
-          <ProductSection/>
+          <ProductSectionWrapper>
+            <ProductSection/>
+          </ProductSectionWrapper>
         </ShowChildrenProvider>
       </main>
       <Footer></Footer>

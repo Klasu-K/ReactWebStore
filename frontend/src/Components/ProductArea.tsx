@@ -49,7 +49,6 @@ const searchAndUpdateProducts = (productSetter: productSetter, page: number, pag
 
   productQueries.getMany(page, pageSize, simpleFilters, rangeFilters)
   .then((data) => {
-    console.log(data)
     productSetter(data)
   })
 }

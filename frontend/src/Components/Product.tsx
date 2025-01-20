@@ -46,14 +46,14 @@ const getImage = (imageNumber: number) => {
   return myImage
 }
 
-const StyledProduct = styled(Product)`  
-  /* background: var(--test-product-color); */
+const StyledProduct = styled(Product)`
   box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.265);
   border-radius: 8px 8px 3px 3px;
   overflow: hidden;
   padding-bottom: 3px;
   display: inline-block;
   text-align: center;
+  
   &:hover {
     box-shadow: 0px 1px 8px 3px rgba(0, 0, 0, 0.397);
     filter: contrast(120%);

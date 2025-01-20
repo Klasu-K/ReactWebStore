@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle<{}>`
   :root {
     --navbar-height: 50px;
     --navbar-color: #dadada;
+    --producSection-mainColor: #d0d3c5;
     --footer-color: #2c2e30;
     --space-after-navbar: 40px;
     --site-left-space: 10px;

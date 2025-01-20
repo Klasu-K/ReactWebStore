@@ -7,6 +7,7 @@ import productQueries from "../services/productQueries";
 import { getRangeFilterIndexByName } from "../utils/rangeFilterUtils";
 import ProductFilterAreaWrapper from "./ProductFilterAreaWrapper";
 import ToggleVisibilityButton_Filter from "./showChildren/buttonStyles/ToggleVisibilityButton_filter";
+import DisplayChildren from "./showChildren/DisplayChildren";
 
 interface Props {
   className?: string;
@@ -37,15 +38,19 @@ const ProductSection = ({className} : Props) => {
 
   return(
     <div className={className}>
-      <ProductFilterAreaWrapper>
-        <ProductFilterArea
-          toggleSimpleFilterState = {(key) => toggleSimpleFilter(key,setSimpleFiltersStates)}
-          setRangeFilterState = {wrapSetRangeFilter}
-          rangeFilters = {rangeFilters}
-          rangeFiltersValueRange = {rangeFiltersDefaults}
-          simpleFiltersMap = {simpleFiltersStates}>
-        </ProductFilterArea>
-      </ProductFilterAreaWrapper>
+      <DisplayChildren>
+        <div className="left-side">
+          <ProductFilterAreaWrapper>
+            <ProductFilterArea
+              toggleSimpleFilterState = {(key) => toggleSimpleFilter(key,setSimpleFiltersStates)}
+              setRangeFilterState = {wrapSetRangeFilter}
+              rangeFilters = {rangeFilters}
+              rangeFiltersValueRange = {rangeFiltersDefaults}
+              simpleFiltersMap = {simpleFiltersStates}>
+            </ProductFilterArea>
+          </ProductFilterAreaWrapper>
+        </div>
+      </DisplayChildren>   
       
       <div className="right-side">
         <AppliedFiltersArea resetRangeFilter={wrapResetRangeFilter} productFilters={productFilters} toggleSimpleFilterState={(key) => toggleSimpleFilter(key, setSimpleFiltersStates)}/>
@@ -134,24 +139,27 @@ const toggleSimpleFilter = (key: SimpleFilterKey, setSimpleFiltersStates: setSim
 }
 
 const StyledProductSection = styled(ProductSection)`
-  --producSection-mainColor: #D9DFC6;
-  --test-product-color:#EFF3EA;
-  --test-price-color:#FFFDF0;
-  padding: var(--space-after-navbar) 0 100px var(--productarea-padding-x);
+  padding: var(--space-after-navbar) 0 100px 0;
   margin: 0 auto;
   width: 100%;
-  background: var(--producSection-mainColor);
+  max-width: 1500px;
   display: flex;
+  .left-side {
+    flex: 0 0 250px;
+    max-width: clamp(200px, 15vw, 300px);
+  }
   .right-side {
     flex-grow: 1;
     padding: 0 var(--productarea-padding-x);
-    max-width: 1500px;
   }
 
   @media (max-width: 800px) {
     padding: 50px 0;
     .right-side {
       padding: 0px 10px;
+    }
+    .left-side {
+      max-width: 0px;
     }
   }
 `
