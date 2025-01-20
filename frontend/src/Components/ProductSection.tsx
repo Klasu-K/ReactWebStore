@@ -153,7 +153,7 @@ const StyledProductSection = styled(ProductSection)`
     padding: 0 var(--productarea-padding-x);
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 700px) {
     padding: 50px 0;
     .right-side {
       padding: 0px 10px;

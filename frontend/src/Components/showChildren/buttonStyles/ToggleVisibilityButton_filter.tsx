@@ -22,6 +22,7 @@ const ToggleVisibilityButton_Filter = styled(Button)`
   border-radius: 20px;
   border: solid 1px #c6c6c6;
   padding: 5px 10px;
+  margin: 10px;
   :hover {
     cursor: pointer;
   }

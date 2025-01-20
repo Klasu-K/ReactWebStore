@@ -38,7 +38,7 @@ const Product = ({className, productData}: productProps) => {
 const getImage = (imageNumber: number) => {
   const cloudinary = new Cloudinary({
     cloud: {
-      cloudName: "dlmnpup7q" //TODO store cloudName elsewhere
+      cloudName: "dlmnpup7q" //not sensitive, can be used only for dowload and restricted uploads
     }
   });
   let myImage = cloudinary.image(`products/phone-${imageNumber}`); 

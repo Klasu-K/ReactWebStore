@@ -20,6 +20,7 @@ const ToggleVisibilityButton_Close = styled(Button)`
   align-items: center;
   transition: all 1s;
   background-color: transparent;
+  margin: 14px 0;
   .close-icon {
     width: 20px;
     height: 20px;

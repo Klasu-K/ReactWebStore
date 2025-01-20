@@ -27,7 +27,7 @@ const StyledProductFilterAreaWrapper = styled(ProductFilterAreaWrapper)`
   .closetab-btn-wrapper {
     display: block;
     width: max-content;
-    margin: 0 7px 0 auto;
+    margin-left: auto;
   }
   
   .sticky-div {
@@ -35,6 +35,7 @@ const StyledProductFilterAreaWrapper = styled(ProductFilterAreaWrapper)`
     max-height: calc(100vh - var(--navbar-height));
     top: calc(var(--navbar-height) + var(--space-after-navbar));
     overflow-y: auto;
+    padding-bottom : 40px;
     
 
     //Hide scrollbar for Chrome, Safari and Opera
@@ -45,7 +46,7 @@ const StyledProductFilterAreaWrapper = styled(ProductFilterAreaWrapper)`
     -ms-overflow-style: none;  //IE and Edge
     scrollbar-width: none;  //Firefox
   }
-  @media (max-width: 800px) {
+  @media (max-width: 700px) {
     z-index: 20;
     position: fixed;
     max-width: 100%;
