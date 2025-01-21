@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build",
+    "build": "vite build && npm run move:clean && npm run move",
+    "move": "move ./dist ../backend/public",
+    "move:clean": "npm --prefix ../backend run clean:public",
     "lint": "eslint .",
     "preview": "vite preview"
   },

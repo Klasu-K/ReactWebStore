@@ -8,8 +8,9 @@
     "start": "node dist/index.js",
     "dev": "tsx watch ./index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rmdir /s /q dist",
-    "build": "npm run clean && tsc"
+    "clean:dist": "rimraf dist",
+    "clean:public": "rimraf public",
+    "build": "npm run clean:dist && tsc"
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +26,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "mongoose": "^8.7.0",
+    "rimraf": "^6.0.1",
     "tsc": "^2.0.4"
   }
 }
