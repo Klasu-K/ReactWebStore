@@ -1,17 +1,16 @@
 import {Router} from "express"
 import {Product} from "../models/productSchema.js"
-import misc from "../development/misc.js"
 import {makeProductFilter, queryForFilters} from "../utils/filterQueries.js"
 
 const productRouter = Router()
 
-productRouter.get("/test", async (req, res) => {
+productRouter.get("/test", async (_req, res) => {
   console.log("test")
-  //await misc.copyDataToDataBase() //TODO remove on production
+  //await misc.copyDataToDataBase() remove on production
   res.send("test")
 })
 
-productRouter.get("/productFilters", async (req, res) => {
+productRouter.get("/productFilters", async (_req, res) => {
   const simpleFilters = ["category", "brand", "operating system","camera type"] //properties that can be used for filtering, db uses same names on it's product data
   const rangeFilters = ["price","storage capacity","battery capacity"]
   let productFilters : productFilters;
