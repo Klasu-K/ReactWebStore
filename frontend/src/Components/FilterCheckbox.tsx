@@ -22,7 +22,7 @@ const FilterCheckbox = ({ className, label, checked, onChange}: Props) => {
 
 const StyledFilterCheckbox = styled(FilterCheckbox)`
   display: block;
-  font-size: 1.3em;
+  font-size: 1rem;
   &:hover {
     backdrop-filter: brightness(95%);
   }

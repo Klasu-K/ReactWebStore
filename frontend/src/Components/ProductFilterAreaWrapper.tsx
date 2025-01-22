@@ -47,9 +47,10 @@ const StyledProductFilterAreaWrapper = styled(ProductFilterAreaWrapper)`
     scrollbar-width: none;  //Firefox
   }
   @media (max-width: 700px) {
-    z-index: 10;
+    z-index: 100;
     position: fixed;
     max-width: 100%;
+    padding: 20px;
     inset: 0;
     height: 100vh;
     background-color: var(--producSection-mainColor);

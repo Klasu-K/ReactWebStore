@@ -53,8 +53,8 @@ const ProductSection = ({className} : Props) => {
       </DisplayChildren>   
       
       <div className="right-side">
-        <AppliedFiltersArea resetRangeFilter={wrapResetRangeFilter} productFilters={productFilters} toggleSimpleFilterState={(key) => toggleSimpleFilter(key, setSimpleFiltersStates)}/>
         <ToggleVisibilityButton_Filter/>
+        <AppliedFiltersArea resetRangeFilter={wrapResetRangeFilter} productFilters={productFilters} toggleSimpleFilterState={(key) => toggleSimpleFilter(key, setSimpleFiltersStates)}/>
         <ProductArea productFilters={productFilters}/> 
       </div>
     </div>      

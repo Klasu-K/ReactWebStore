@@ -85,9 +85,9 @@ const StyledProductFilterSlider = styled(ProductFilterSlider)`
   .rc-slider-handle {
     background-color: #afe8ff;
     border: solid 1px #000000ce;
-    width: 16px;
-    height: 16px;
-    margin-top: -6px;
+    width: 12px;
+    height: 12px;
+    margin-top: -4px;
   }
 
   .values {
@@ -100,7 +100,7 @@ const StyledProductFilterSlider = styled(ProductFilterSlider)`
       text-align: center;
       font-family: "Funnel Sans", "Arial";
       font-weight: 500;
-      font-size: 1em;
+      font-size: 0.8rem;
       border-style: none;
       border-radius: 5px;
       box-sizing: content-box;

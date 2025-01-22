@@ -19,7 +19,7 @@ const StyledLoadProductsBtn = styled(LoadProductsBtn)`
   display: block;
   max-width: max-content;
   border-radius: 20px;
-  font-size: 20px;
+  font-size: 1.2rem;
   p {
     padding: 10px;
   }

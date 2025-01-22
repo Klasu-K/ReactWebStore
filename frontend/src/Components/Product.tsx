@@ -57,6 +57,7 @@ const StyledProduct = styled(Product)`
   &:hover {
     box-shadow: 0px 1px 8px 3px rgba(0, 0, 0, 0.397);
     filter: contrast(120%);
+    
     .description-area {
       background-color: #ffffff8e;
       opacity: 1;
@@ -67,6 +68,7 @@ const StyledProduct = styled(Product)`
     transition: all 0.3s;
     position: absolute;
     backdrop-filter: blur(4px);
+    padding: 5px;
     opacity: 0;
     inset: 0;
   }
@@ -76,7 +78,7 @@ const StyledProduct = styled(Product)`
   }
   
   .title {
-    font-size: 18px;
+    font-size: 1.2rem;
     font-weight: 400;
     padding-left: 5px;
   }
@@ -84,7 +86,7 @@ const StyledProduct = styled(Product)`
   .price {
     font-weight: 400;
     color: #212121;
-    font-size: 15px;
+    font-size: 1rem;
     padding-left: 10px;
   }
 
@@ -97,7 +99,7 @@ const StyledProduct = styled(Product)`
   }
 
   .specs-text {
-    font-size: 12px;
+    font-size: 0.8rem;
     white-space: nowrap;
   }
 
@@ -107,7 +109,6 @@ const StyledProduct = styled(Product)`
 
   .product-image {
     max-width: 100%;
-    padding: 0 0px;
   }
 
   

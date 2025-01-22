@@ -39,7 +39,7 @@ padding-top: 5px;
 
   &::after {
     content: "▲";
-    font-size: 1em;
+    font-size: 1rem;
     margin-left: auto;
     transition: transform .3s;
   }
@@ -54,7 +54,7 @@ padding-top: 5px;
 
 .label {
   text-transform: capitalize;
-  font-size: 16px; 
+  font-size: 1rem; 
   font-weight: 500;
 }
 

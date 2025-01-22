@@ -37,24 +37,24 @@ const AppliedSimpleFilter = ({ className, simpleFilter, toggleSimpleFilterState 
 const StyledAppliedSimpleFilter = styled(AppliedSimpleFilter)`
   display: flex;
   .title-area {
-    min-width: 180px;
+    min-width: 150px;
   }
   .title {
-    font-weight: 600;
-    font-size: 22px;
+    font-weight: 500;
+    font-size: 1.1rem;
     display: block;
     transform: translateY(-2px);
     &:hover {
       text-decoration: line-through;
       text-decoration-color: #000000;
-      text-decoration-thickness: 3px;
+      text-decoration-thickness: 1px;
       color: gray;
     }
   }
   .filters {
     
     font-weight: 400;
-    font-size: 20px;
+    font-size: 1rem;
     padding-left: 10px;
     display: flex;
     flex-wrap: wrap;
@@ -73,7 +73,7 @@ const StyledAppliedSimpleFilter = styled(AppliedSimpleFilter)`
       border: none;
       position: relative;
       right: 5px;
-      font-size: 15px;
+      font-size: 0.8rem;
       font-weight: 400;
       padding-left: 10px;
       color: #0000007d;
@@ -81,7 +81,7 @@ const StyledAppliedSimpleFilter = styled(AppliedSimpleFilter)`
     &:hover .filter-inner-wrapper {
       text-decoration: line-through;
       text-decoration-color: #000000;
-      text-decoration-thickness: 3px;
+      text-decoration-thickness: 1px;
       color: gray;
     }
   }
