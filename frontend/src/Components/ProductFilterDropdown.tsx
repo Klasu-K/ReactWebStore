@@ -43,6 +43,10 @@ padding-top: 5px;
     margin-left: auto;
     transition: transform .3s;
   }
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .content {
