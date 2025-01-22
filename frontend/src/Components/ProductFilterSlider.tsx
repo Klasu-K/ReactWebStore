@@ -26,7 +26,6 @@ const ProductFilterSlider = ({ className, rangeLowerBound, rangeUpperBound, rang
 
   useEffect(() => {
     setRange([rangeFilterMin, rangeFilterMax])
-    console.log("aa")
     // debugger
   }, [rangeFilterMin, rangeFilterMax])
 

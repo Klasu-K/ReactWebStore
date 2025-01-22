@@ -1,6 +1,4 @@
 import axios from "axios";
-
-//const baseURL = "http://localhost:3003/api/products"
 const baseURL = getApiBaseUrl()
 
 const getFilters = () => {
@@ -40,9 +38,12 @@ const getMany = (page: number, pageSize: number, simpleFilters : simpleFilters, 
 function getApiBaseUrl() {
   /* function is hoisted up so it's not arrow function */
   //!COULD cause problems on production, test if error is because of this
-  const { protocol, hostname } = window.location;
-  const backendPort = "3003";
-  return `${protocol}//${hostname}:${backendPort}/api/products`;
+  // const baseURL = window.location.href;
+  const baseURL = import.meta.env.VITE_API_URL;
+  if(!baseURL) {
+    console.error("api url not defined")
+  }
+  return `${baseURL}/api/products`;
 };
 
 export default {getOne, getMany, getFilters}
