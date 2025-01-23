@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Product from "./Product"
 import ProductContainer from "./ProductContainer"
 
-import productQueries from "../services/productQueries"
+import productQueries from "../../services/productQueries"
 
 interface Props {
   className?: string;

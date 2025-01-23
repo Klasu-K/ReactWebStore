@@ -1,13 +1,13 @@
 import styled from "styled-components"
-import ProductFilterArea from "./ProductFilterArea"
-import ProductArea from "./ProductArea"
+import ProductFilterArea from "../../filterArea/ProductFilterArea"
+import ProductArea from "../../productArea/ProductArea"
 import { useState, useEffect } from "react";
-import AppliedFiltersArea from "./AppliedFiltersArea";
-import productQueries from "../services/productQueries";
-import { getRangeFilterIndexByName } from "../utils/rangeFilterUtils";
-import ProductFilterAreaWrapper from "./ProductFilterAreaWrapper";
-import ToggleVisibilityButton_Filter from "./showChildren/buttonStyles/ToggleVisibilityButton_filter";
-import DisplayChildren from "./showChildren/DisplayChildren";
+import AppliedFiltersArea from "../../appliedFiltersArea/AppliedFiltersArea";
+import productQueries from "../../../services/productQueries";
+import { getRangeFilterIndexByName } from "../../../utils/rangeFilterUtils";
+import ProductFilterAreaWrapper from "../../filterArea/ProductFilterAreaWrapper";
+import ToggleVisibilityButton_Filter from "../../showChildren/buttonStyles/ToggleVisibilityButton_filter";
+import DisplayChildren from "../../showChildren/DisplayChildren";
 
 interface Props {
   className?: string;

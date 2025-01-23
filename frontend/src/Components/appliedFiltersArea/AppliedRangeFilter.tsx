@@ -16,9 +16,9 @@ const AppliedRangeFilter = ({className, rangeFilter, resetRangeFilter} : Props) 
         <span className="title">{rangeFilter[0]}</span>
       </div>
       <div className="filters">
-        <div className="filter">{`${Math.round(rangeFilter[1])}€`}</div>
+        <div className="filter">{`${Math.round(rangeFilter[1])}`}</div>
         -
-        <div className="filter">{`${Math.round(rangeFilter[2])}€`}</div>
+        <div className="filter">{`${Math.round(rangeFilter[2])}`}</div>
       </div>
     </div>
   )

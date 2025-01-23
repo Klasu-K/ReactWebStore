@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
-import DisplayChildren from "./showChildren/DisplayChildren";
-import ToggleVisibility from "./showChildren/buttonStyles/ToggleVisibilityButton_close";
+import DisplayChildren from "../showChildren/DisplayChildren";
+import ToggleVisibility from "../showChildren/buttonStyles/ToggleVisibilityButton_close";
 
 interface Props {
   className?: string;

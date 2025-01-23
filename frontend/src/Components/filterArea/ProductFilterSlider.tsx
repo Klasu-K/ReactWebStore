@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { useEffect, useRef, useState } from "react";
-import { getRangeFilterByName, rangeFilterExists } from "../utils/rangeFilterUtils";
+import { getRangeFilterByName, rangeFilterExists } from "../../utils/rangeFilterUtils";
 
 interface Props {
   className?: string;

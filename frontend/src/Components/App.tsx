@@ -1,16 +1,16 @@
 
-import NavBar from "./NavBar"
-import Footer from "./Footer"
-import ProductSection from "./ProductSection"
-import GlobalStyle from "./GlobalStyle"
+import NavBar from "./mainSections/NavBar"
+import Footer from "./mainSections/Footer"
+import ProductSection from "./mainSections/productSection/ProductSection"
+import GlobalStyles from "./GlobalStyles"
 import {ShowChildrenProvider} from "./showChildren/ShowChildrenContext"
-import ProductSectionWrapper from "./ProductSectionWrapper"
+import ProductSectionWrapper from "./mainSections/productSection/ProductSectionWrapper"
 
 const App = () => {
 
   return (
     <>
-      <GlobalStyle/>
+      <GlobalStyles/>
       <NavBar/>
       <main>
         <ShowChildrenProvider>
