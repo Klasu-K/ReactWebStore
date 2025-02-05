@@ -54,14 +54,22 @@ const ProductSection = ({className} : Props) => {
       
       <div className="right-side">
         <ToggleVisibilityButton_Filter/>
-        <AppliedFiltersArea resetRangeFilter={wrapResetRangeFilter} productFilters={productFilters} toggleSimpleFilterState={(key) => toggleSimpleFilter(key, setSimpleFiltersStates)}/>
+        <AppliedFiltersArea 
+          resetRangeFilter={wrapResetRangeFilter} 
+          productFilters={productFilters} 
+          toggleSimpleFilterState={(key) => toggleSimpleFilter(key, setSimpleFiltersStates)}/>
         <ProductArea productFilters={productFilters}/> 
       </div>
     </div>      
   )
 }
 
-const resetRangeFilter = (filterName: string, rangeFilters: rangeFilter[], rangeFiltersDefaults: rangeFilter[], setRangeFiltersState: setRangeFiltersState) => {
+const resetRangeFilter = (
+  filterName: string, 
+  rangeFilters: rangeFilter[], 
+  rangeFiltersDefaults: rangeFilter[], 
+  setRangeFiltersState: setRangeFiltersState
+) => {
   let filterToUpdate = rangeFiltersDefaults.find(filter => filter[0] === filterName)
   if(!filterToUpdate) {
     console.error(`could not reset filter ${filterName}`)
@@ -71,7 +79,12 @@ const resetRangeFilter = (filterName: string, rangeFilters: rangeFilter[], range
   }
 }
 
-const setRangeFilter = (newRangeFilter : rangeFilter, rangeFilters: rangeFilter[], rangeFiltersDefaults: rangeFilter[], setRangeFiltersState: setRangeFiltersState)  => {
+const setRangeFilter = (
+  newRangeFilter : rangeFilter, 
+  rangeFilters: rangeFilter[], 
+  rangeFiltersDefaults: rangeFilter[], 
+  setRangeFiltersState: setRangeFiltersState
+)  => {
   const filterName = newRangeFilter[0]
   const min = newRangeFilter[1]
   const max  = newRangeFilter[2]
@@ -94,7 +107,10 @@ const setRangeFilter = (newRangeFilter : rangeFilter, rangeFilters: rangeFilter[
   setRangeFiltersState(updatedRangeFilters)
 }
 
-const calculateToggledSimpleFilters = ({category, filter}: SimpleFilterKey,simpleFiltersMap: simpleFiltersMap) => {
+const calculateToggledSimpleFilters = (
+  {category, filter}: SimpleFilterKey,
+  simpleFiltersMap: simpleFiltersMap
+) => {
   let updatedStates: simpleFiltersMap = new Map(simpleFiltersMap)
   const previsiousState = simpleFiltersMap.get(category)?.get(filter)
   if(previsiousState !== undefined) {
@@ -121,7 +137,10 @@ const getActiveSimpleFilters = (simpleFiltersMap: simpleFiltersMap) => {
   return activeFilters
 }
 
-const initializeFilters = async (setRangeFiltersDefaults : setRangeFiltersState, setSimpleFiltersStates: setSimpleFiltersMapState) => {
+const initializeFilters = async (
+  setRangeFiltersDefaults : setRangeFiltersState, 
+  setSimpleFiltersStates: setSimpleFiltersMapState
+) => {
   getFilteringOptions()
     .then(productFilters => {
       setRangeFiltersDefaults(productFilters.rangeFilters);
@@ -165,5 +184,3 @@ const StyledProductSection = styled(ProductSection)`
 `
 
 export default StyledProductSection
-
-

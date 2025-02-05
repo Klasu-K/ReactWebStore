@@ -7,7 +7,7 @@ interface Props {
 const NavBar = ({className}: Props) => {
   return(
     <nav className={className}>
-      <a className="github-link" href="https://github.com/Klasu-K/ReactWebStore">link to github</a>
+      <a className="github-link" href="https://github.com/Klasu-K/ReactWebStore">check github repository</a>
     </nav>
   )
 }
